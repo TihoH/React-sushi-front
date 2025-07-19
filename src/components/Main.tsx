@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const Main = () => {
 
     async function getData() {
-        const response = await fetch( 'http://localhost:5000/sushi' )
+        const response = await fetch( 'https://react-sushi.onrender.com/sushi' )
         const data = await response.json()
         console.log(data)
     }
