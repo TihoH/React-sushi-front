@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+       colors: {
+        myTextGray: '#7B7C85', // название: значение
+      },
+    },
   },
   plugins: [],
 }

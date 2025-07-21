@@ -1,11 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from "react";
+import HeaderTop from "./HeaderTop";
+import HeaderLinks from "./HeaderLinks";
 
 const Header = () => {
-    return (
-        <div>
-            <h1>Header</h1>
-        </div>
-    );
+  const [showTop, setShowTop] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+
+      if (currentY > lastScrollY.current && currentY > 100) {
+        setShowTop(false); // Скроллим вниз
+      } else {
+        setShowTop(true); // Скроллим вверх
+      }
+
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="relative">
+      <div
+        className={`fixed top-0 left-0  w-full z-50 bg-white transition-transform duration-300 ${
+          showTop ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <HeaderTop />
+        <HeaderLinks />
+      </div>
+      <div className="h-[120px] border " />
+    </div>
+  );
 };
 
 export default Header;

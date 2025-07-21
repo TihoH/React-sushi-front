@@ -1,19 +1,19 @@
 
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 import Main from "./components/Main";
 
 const Layout = () => {
   return (
-    <div className="wrapper">
-      <header style={{ padding: "20px", background: "#eee" }}>
-        <h1>Мой сайт</h1>
-      </header>
+    <div className="wrapper overflow-x-hidden">
+      <Header />
 
-      <main style={{ padding: "20px" }}>
+      <main className="p-5">
         <Main />
       </main>
 
-      <footer style={{ padding: "20px", background: "#eee" }}>
-        © 2025 Все права защищены
+      <footer>
+        <Footer />
       </footer>
     </div>
   );
