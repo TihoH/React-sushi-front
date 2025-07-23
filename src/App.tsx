@@ -1,11 +1,12 @@
 import React from "react";
 import Layout from "./Layout";
+import Router from "./Router";
 
 const App: React.FC = () => {
   return (
-    <div className="flex items-start justify-center ">
-      <Layout />
-    </div>
+    <>
+      <Router />
+    </>
   );
 };
 

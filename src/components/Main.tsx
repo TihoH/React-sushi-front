@@ -1,36 +1,20 @@
-import { useEffect, useState } from "react";
-import MainDeliveryDnepr from "./MainDeliveryDnepr";
+import GroupSushiList from "./GroupSushiList";
 import BannerSlide from "./BannerSlide";
 import MainInfoBlock from "./MainInfoBlock";
+import { useGetDataCategory } from "../hooks/useGetDataCategory";
+import { useStore } from "../store/app";
+import { useParams } from "react-router-dom";
 
 const Main = () => {
-    const [deliveryData , setDeliveryData] = useState([])
+  const { data, isLoading } = useGetDataCategory('deliveryDnepr');
 
-  async function getData() {
-    const response = await fetch("https://react-sushi.onrender.com/sushi");
-    const data = await response.json();
-    console.log(data);
-  }
-
-  async function getDataDeliveryDnepr() {
-    const response = await fetch(
-      `https://react-sushi.onrender.com/sushi?category=deliveryDnepr`
-    );
-    const data = await response.json();
-    setDeliveryData(data)
-    console.log(data);
-  }
-
-  useEffect(() => {
-    getData();
-    getDataDeliveryDnepr();
-  }, []);
   return (
-    <div className="min-h-screen">
-        <BannerSlide />
-      <MainDeliveryDnepr category="deliveryDnepr" dataDelivery={deliveryData}/>
+    <>
+      <BannerSlide />
+      <GroupSushiList dataDelivery={data} isLoading={isLoading} />
       <MainInfoBlock />
-    </div>
+
+    </>
   );
 };
 

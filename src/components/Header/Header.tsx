@@ -7,9 +7,11 @@ const Header = () => {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
+    
     const handleScroll = () => {
+      console.log('fqfq')
       const currentY = window.scrollY;
-
+      console.log(currentY, lastScrollY.current, showTop);
       if (currentY > lastScrollY.current && currentY > 100) {
         setShowTop(false); // Скроллим вниз
       } else {
@@ -33,7 +35,7 @@ const Header = () => {
         <HeaderTop />
         <HeaderLinks />
       </div>
-      <div className="h-[120px] border " />
+      <div className="h-[120px] " />
     </div>
   );
 };

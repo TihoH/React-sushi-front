@@ -1,4 +1,4 @@
-export type DataDelivery = {
+export type ItemProduct = {
     category:string ,
     createdAt:string ,
     description: string,

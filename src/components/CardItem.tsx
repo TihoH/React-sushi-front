@@ -1,17 +1,28 @@
 import React, { FC } from "react";
-import { DataDelivery } from "../../types";
+import { ItemProduct } from "../../types";
 import { CircleDollarSign } from "lucide-react";
-import Button from "../UI/Button";
+import Button from "../UI/CustomButton";
+import { useStore } from "../store/app";
+
 
 interface ICardItemProps {
-  cardItem: DataDelivery;
+  cardItem: ItemProduct;
 }
 
-const CardItem: FC<ICardItemProps> = ({ cardItem }) => {
+const CardItem: FC<ICardItemProps> = ({ cardItem  }) => {
+
+  const { adedToCart } = useStore( state => state )
+
+  const addedItemToCart = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    adedToCart(true)
+  }
+
   return (
-    <div className="rounded-lg shadow-xl w-full hover:shadow-gray-400 transition cursor-pointer">
+    <div className="rounded-lg shadow-xl w-full hover:shadow-gray-400 transition cursor-pointer max-h-[500px] h-full">
       <img src={cardItem.imageUrl} alt="sushi image" className="rounded-t-md" />
-      <div className="p-4 flex gap-4 flex-col">
+      <div className="p-4 flex gap-4 flex-col h-full ">
         <div className="flex justify-between">
           <span className="font-medium">{cardItem.weight} г</span>
           <div className="flex gap-2">
@@ -29,7 +40,7 @@ const CardItem: FC<ICardItemProps> = ({ cardItem }) => {
         </div>
         <div className="flex justify-between items-center">
             <span className="font-bold">{cardItem.price} ГРН</span>
-            <Button Children={"В Кошик"} />
+            <Button Children={"В Кошик"} onClick={ (e) => addedItemToCart(e) } />
         </div>
       </div>
     </div>
