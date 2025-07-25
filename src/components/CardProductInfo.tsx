@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { ItemProduct } from "../../types";
 import CustomButton from "../UI/CustomButton";
 import { BanknoteArrowDown, Gift, Info, Truck } from "lucide-react";
+import AdedToCart from "./AdedToCart";
 
 interface ICardProductsInfoProps {
   product: ItemProduct;
@@ -25,7 +26,7 @@ const CardProductInfo: FC<ICardProductsInfoProps> = ({ product }) => {
           </p>
           <div className="max-w-[600px] flex  justify-between items-center">
             <span className="text-[45px] font-medium">{product.price} грн</span>
-            <CustomButton className="w-[200px]" Children={"В Кошик"} />
+            <AdedToCart cardItem={product} />
           </div>
         </div>
         <div className="flex flex-col gap-2">

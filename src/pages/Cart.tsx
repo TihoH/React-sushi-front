@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Popup = ({chilren}) => {
+const Cart = () => {
     return (
         <div>
-            {...chilren}
+            <h1>Корзина</h1>
         </div>
     );
 };
 
-export default Popup;
+export default Cart;

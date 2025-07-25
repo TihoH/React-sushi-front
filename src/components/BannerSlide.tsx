@@ -17,28 +17,27 @@ const images = [...baseImages, ...baseImages];
 
 export default function BannerSlide() {
   return (
-    <div  className="-mx-[calc((100vw-100%)/2)]"> 
-          <Swiper
-      modules={[Navigation, Pagination, Autoplay]}
-      // navigation
-      // pagination={{ clickable: true }}
-      loop={true}
-      centeredSlides={true}
-      slidesPerView={2}
-      spaceBetween={-15}
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-      }}
-     style={{ width: "100%", height: 300  }}
-    
-    >
-      {images.map((src, idx) => (
-        <SwiperSlide key={idx}>
-          <img src={src} alt={`Slide ${idx + 1}`} className="slide-image" />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="-mx-[calc((100vw-100%)/2)] mt-2">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        // navigation
+        // pagination={{ clickable: true }}
+        loop={true}
+        centeredSlides={true}
+        slidesPerView={2}
+        spaceBetween={-15}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        style={{ width: "100%", height: 300 }}
+      >
+        {images.map((src, idx) => (
+          <SwiperSlide key={idx}>
+            <img src={src} alt={`Slide ${idx + 1}`} className="slide-image" />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }

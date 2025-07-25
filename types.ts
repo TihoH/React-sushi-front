@@ -9,4 +9,5 @@ export type ItemProduct = {
     stock: number ,
     updatedAt:string ,
     weight: string
+    quantity?: number
 }

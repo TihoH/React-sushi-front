@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import Main from "./components/Main";
 import CardProduct from "./pages/CardProduct";
 import ListCurrentCategory from "./pages/ListCurrentCategory";
+import Cart from "./pages/Cart";
 
 
 const Router = () => {
@@ -15,6 +16,7 @@ const Router = () => {
           <Route path="product" element={<CardProduct /> }></Route>
           <Route path="category/:name" element={<ListCurrentCategory /> }></Route>
                <Route path="product/:name" element={<CardProduct /> }></Route>
+                         <Route path="cart" element={<Cart /> }></Route>
         </Route>
       </Routes>
     </>

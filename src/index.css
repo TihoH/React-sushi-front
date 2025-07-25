@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* ⛔ запрещаем горизонтальную прокрутку */
-}
 
 .slide-image {
   width: 100%;
