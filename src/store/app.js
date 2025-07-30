@@ -6,10 +6,10 @@ export const useStore = create(
     (set, get) => ({
       currentCategory: "deliveryDnepr",
       activeAdedCartPopup: false,
+      activeSearch: false ,
       cart: [],
 
       setCurrentCategory: (val) => set({ currentCategory: val }),
-
       adedToCart: (val) => {
         const cart = get().cart;
         const findItemCart = cart.find((item) => item.id === val.product.id);
@@ -29,7 +29,6 @@ export const useStore = create(
         set({ activeAdedCartPopup: val.active });
         setTimeout(() => set({ activeAdedCartPopup: false }), 4000);
       },
-
       deleteItemCart: (val) => {
         const cart = get().cart;
         set({
@@ -40,6 +39,15 @@ export const useStore = create(
             .filter((item) => item.quantity > 0),
         });
       },
+      deleteItemInCart: (val) => {
+       set( {cart:  get().cart.filter( item => item.id != val )} )
+      } ,
+      clearCart: () => {
+        set({ cart: [] })
+      },
+      setActiveSearch: (val) => {
+        set({ activeSearch: val })
+      }
     }),
     {
       name: "cart-storage", // ключ localStorage

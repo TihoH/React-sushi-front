@@ -1,8 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import { useStore } from "../store/app";
 import CustomButton from "../UI/CustomButton";
+import { ItemProduct } from "../../types";
 
-const AdedToCart = ({ cardItem }) => {
+interface IAdedToCartProps {
+cardItem: ItemProduct ,
+widthBtn?: number ,
+active?: boolean
+}
+
+const AdedToCart:FC<IAdedToCartProps> = ({ cardItem, widthBtn , active }) => {
   const { adedToCart, cart, deleteItemCart } = useStore((state) => state);
 
   const findItemInCart = cart.find((item) => item.id === cardItem.id);
@@ -21,8 +28,10 @@ const AdedToCart = ({ cardItem }) => {
   return (
     <div className="flex justify-between items-center">
       <CustomButton
+        widthBtn={widthBtn}
+        active={active}
         onClick={(e) => addedItemToCart(e)}
-        className={`${findItemInCart && "border-2 border-green-600 "}  `}
+        className={`${findItemInCart && "border border-gray-300 "}  `}
       >
         {!findItemInCart || !findItemInCart.quantity ? (
           "В Кошик"

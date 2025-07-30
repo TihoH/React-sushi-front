@@ -10,8 +10,8 @@ const Cart = () => {
         <div className="w-full">
           <CartItemsList cart={cart} />
         </div>
-        <div className="max-w-[400px] w-full ">
-            <CartIssue />
+        <div className="max-w-[500px] w-full ">
+            <CartIssue cart={cart} />
         </div>
       </div>
   );

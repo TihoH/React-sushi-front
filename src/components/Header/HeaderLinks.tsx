@@ -8,14 +8,14 @@ const HeaderLinks = () => {
     { link: "Сети", id: 1, category: "sets" },
     { link: "Роли та суші", id: 2, category: "rols" },
     { link: "Акції", id: 3, category: "stock" },
-    { link: "1+1=3", id: 4 },
-    { link: "Комбо", id: 5 },
-    { link: "Суші бургери", id: 6 },
-    { link: "Гаряче та супи", id: 7 },
-    { link: "Салати та закуски", id: 8 },
-    { link: "Десерти", id: 9 },
-    { link: "Напої", id: 10 },
-    { link: "Доповнення", id: 11 },
+    { link: "1+1=3", id: 4 , category: 'plusSushi' },
+    { link: "Комбо", id: 5 , category: 'combo' },
+    { link: "Суші бургери", id: 6 , category: 'sushiBurger' },
+    { link: "Гаряче та супи", id: 7 , category: 'hotEndSoup' },
+    { link: "Салати та закуски", id: 8 , category: '' },
+    { link: "Десерти", id: 9 , category: 'salad' },
+    { link: "Напої", id: 10 , category: 'drink' },
+    { link: "Доповнення", id: 11 , category: 'adedToOrder'},
   ];
   return (
     <ul className=" flex justify-between text-myTextGray px-7 font-medium shadow-lg  -mx-[calc((100vw-100%)/2)]">

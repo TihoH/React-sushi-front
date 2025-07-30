@@ -26,7 +26,7 @@ const CardProductInfo: FC<ICardProductsInfoProps> = ({ product }) => {
           </p>
           <div className="max-w-[600px] flex  justify-between items-center">
             <span className="text-[45px] font-medium">{product.price} грн</span>
-            <AdedToCart cardItem={product} />
+            <AdedToCart cardItem={product} widthBtn={200} />
           </div>
         </div>
         <div className="flex flex-col gap-2">

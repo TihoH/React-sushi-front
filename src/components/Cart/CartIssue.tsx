@@ -1,19 +1,39 @@
 import React from 'react';
+import CustomButton from '../../UI/CustomButton';
 
-const CartIssue = () => {
+const CartIssue = ({cart}) => {
+
+
+ function orderPrice() {
+    if (!cart) {
+        return null;
+    }
+
+    return cart.reduce((total, item) => {
+        if (item.quantity) {
+            return total + item.price * item.quantity;
+        }
+        return total;
+    }, 0);
+}
+
     return (
         <div className='p-4 text-myTextGray text-xl shadow-xl rounded-md'>
-            <input type="text" className='w-full border h-12 rounded-md px-4' placeholder='промокод?' />
+            <input type="text" className='w-full border h-16 rounded-md px-4' placeholder='промокод?' />
             <div className='flex flex-col gap-3 mt-2'>
                 <div className='flex justify-between'>
-                    <span>Товари</span>
-                <span>1665 грн</span>
+                    <span>Товаров</span>
+                <span>{cart.length}</span>
                 </div>
                 <div className='flex justify-between'>
                     <span>Знижка</span>
-                    <span>254 грн</span>
+                    <span> без знижки </span>
                 </div>
-                <h4 className='text-black text-2xl'>1411 грн</h4>
+                <h4 className='text-black text-2xl'>{orderPrice()} грн</h4>
+                <CustomButton className='mt-3 font-semibold '     >
+                    <span>Оформити</span>
+                    <span className='ml-3'>{orderPrice()} грн</span>
+                </CustomButton>
             </div>
         </div>
     );
