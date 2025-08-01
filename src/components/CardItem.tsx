@@ -1,7 +1,7 @@
 import  { FC } from "react";
 import { ItemProduct } from "../../types";
 import { CircleDollarSign } from "lucide-react";
-import AdedToCart from "./AdedToCart";
+import WrappToButtonOrder from "./WrappToButtonOrder";
 
 interface ICardItemProps {
   cardItem: ItemProduct;
@@ -30,7 +30,7 @@ const CardItem: FC<ICardItemProps> = ({ cardItem }) => {
         <div className="">{cardItem.description.slice(0, 70)}...</div>
         <div className="flex items-center justify-between">
           <span className="font-bold">{cardItem.price} ГРН</span>
-          <AdedToCart cardItem={cardItem}   />
+          <WrappToButtonOrder cardItem={cardItem}   />
         </div>
       </div>
     </div>

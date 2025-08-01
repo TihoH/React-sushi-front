@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetDataCategory } from "../hooks/useGetDataCategory";
+import { useGetDataCategory } from "../hooks/useGetDataCategory.ts";
 import GroupSushiList from "../components/GroupSushiList";
 
 const ListCurrentCategory = () => {
@@ -10,7 +10,7 @@ const ListCurrentCategory = () => {
     <div>
       <h1>{name}</h1>
 
-      <GroupSushiList dataDelivery={data} isLoading={isLoading} />
+      <GroupSushiList dataList={data} isLoading={isLoading} title={""} />
     </div>
   );
 };

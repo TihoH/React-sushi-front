@@ -1,23 +1,65 @@
 import { X, Search as SearchIcon } from "lucide-react";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useAppStore } from "../store/app";
+import SearchList from "./SearchList";
+import { useGetDataSearch } from "../hooks/useGetSearchData";
 
 const Search = () => {
+  const { setActiveSearch } = useAppStore((state) => state);
+  const [searchValue, setSearchValue] = useState("");
+  const { dataSearch, isLoadingSearch } = useGetDataSearch(searchValue);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setActiveSearch(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setActiveSearch]);
+
   return (
-    <div className=" min-h-full bg-white z-10 pt-[130px] flex flex-col items-center">
+    <div className=" min-h-full bg-white z-10 pt-[130px] flex flex-col items-center" ref={containerRef}>
       <div className="flex items-center gap-4">
         <div className="w-[500px] relative">
           <input
             type="text"
             placeholder="Пошук"
             className="h-[60px] pl-20 w-full rounded-md outline-none bg-gray-100"
+            onChange={(e) => setSearchValue(e.target.value)}
           />
-      <SearchIcon className="absolute top-1/2 left-2 -translate-y-1/2" />
+          <SearchIcon className="absolute top-1/2 left-2 -translate-y-1/2" />
         </div>
-        <X
-          className="h-[60px] w-[60px]  hover:opacity-100 transition border cursor-pointer border-gray-400 rounded-lg mr-2 hover:bg-gray-800 bg-black text-white duration-300 p-1"
-          //   onClick={}
-        />
+        {isLoadingSearch && searchValue  ? (
+          <div className="h-[60px] w-[60px] flex items-center justify-center border border-gray-400 rounded-lg mr-2">
+            <div className="w-6 h-6 border-4 border-t-transparent border-black rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <X
+            className="h-[60px] w-[60px] hover:opacity-100 transition border cursor-pointer border-gray-400 rounded-lg mr-2 hover:bg-gray-800 bg-black text-white duration-300 p-1"
+            onClick={() => setActiveSearch(false)}
+          />
+        )}
       </div>
+      {dataSearch?.length && searchValue && (
+        <div className="max-w-[1200px] w-full">
+          
+          <SearchList
+            dataList={dataSearch}
+            isLoadingSearch={isLoadingSearch}
+            searchValue={searchValue}
+          />
+        </div>
+      ) }
+      {/* { searchValue && dataSearch?.length  ? <span>Ничего не найдено</span> : '122' } */}
     </div>
   );
 };

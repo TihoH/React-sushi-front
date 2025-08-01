@@ -1,20 +1,20 @@
 import React from 'react';
 import CustomButton from '../../UI/CustomButton';
 
-const CartIssue = ({cart}) => {
+const CartIssue = ({cart , adedToOrderProducts}) => {
 
+function orderPrice(cart, adedToOrderProducts) {
+  if (!cart || !adedToOrderProducts) return 0;
 
- function orderPrice() {
-    if (!cart) {
-        return null;
-    }
+  const priceAdedToOrderProducts = adedToOrderProducts.reduce((total, item) => {
+    return total + (item.price * (item.quantity || 1));
+  }, 0);
 
-    return cart.reduce((total, item) => {
-        if (item.quantity) {
-            return total + item.price * item.quantity;
-        }
-        return total;
-    }, 0);
+  const priceCart = cart.reduce((total, item) => {
+    return total + (item.price * (item.quantity || 1));
+  }, 0);
+
+  return priceCart + priceAdedToOrderProducts;
 }
 
     return (
@@ -29,10 +29,10 @@ const CartIssue = ({cart}) => {
                     <span>Знижка</span>
                     <span> без знижки </span>
                 </div>
-                <h4 className='text-black text-2xl'>{orderPrice()} грн</h4>
-                <CustomButton className='mt-3 font-semibold '     >
+                <h4 className='text-black text-2xl'>{orderPrice(cart, adedToOrderProducts)} грн</h4>
+                <CustomButton className='mt-3 font-semibold  '     >
                     <span>Оформити</span>
-                    <span className='ml-3'>{orderPrice()} грн</span>
+                    <span className='ml-3'>{orderPrice(cart, adedToOrderProducts)} грн</span>
                 </CustomButton>
             </div>
         </div>

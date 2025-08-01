@@ -2,7 +2,7 @@ import React from "react";
 
 const SkeletonCard = () => {
   return (
-  <div className="rounded-lg border border-gray-200 shadow-md p-4 w-full max-w-sm mx-auto animate-pulse bg-white ">
+  <div className="rounded-lg border border-gray-200 shadow-md p-4 min-w-full max-w-sm mx-auto animate-pulse bg-white ">
       {/* Изображение */}
       <div className="h-48 bg-gray-300 rounded-md mb-4 relative overflow-hidden">
         {/* shimmer */}

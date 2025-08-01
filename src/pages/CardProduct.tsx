@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useGetProduct } from "../hooks/useGetProduct";
+import { useGetProduct } from "../hooks/useGetProduct.ts";
 import { ArrowBigLeftDash } from "lucide-react";
 import CardProductInfo from "../components/CardProductInfo";
 import SkeletonPageProduct from "../UI/SkeletonPageProduct";

@@ -1,9 +1,8 @@
 import GroupSushiList from "./GroupSushiList";
 import BannerSlide from "./BannerSlide";
 import MainInfoBlock from "./MainInfoBlock";
-import { useGetDataCategory } from "../hooks/useGetDataCategory";
-import { useStore } from "../store/app";
-import { useParams } from "react-router-dom";
+import { useGetDataCategory } from "../hooks/useGetDataCategory.ts";
+
 
 const Main = () => {
   const { data, isLoading } = useGetDataCategory('deliveryDnepr');
@@ -11,7 +10,7 @@ const Main = () => {
   return (
     <>
       <BannerSlide />
-      <GroupSushiList dataDelivery={data} isLoading={isLoading} />
+      <GroupSushiList dataList={data} isLoading={isLoading} title={"Доставка суші Дніпро"} />
       <MainInfoBlock />
 
     </>

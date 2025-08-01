@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useStore } from "../store/app";
+import { useCartStore } from "../store/cart";
 import CustomButton from "../UI/CustomButton";
 import { ItemProduct } from "../../types";
 
@@ -10,7 +10,7 @@ active?: boolean
 }
 
 const AdedToCart:FC<IAdedToCartProps> = ({ cardItem, widthBtn , active }) => {
-  const { adedToCart, cart, deleteItemCart } = useStore((state) => state);
+  const { adedToCart, cart, deleteItemCart } = useCartStore((state) => state);
 
   const findItemInCart = cart.find((item) => item.id === cardItem.id);
 
@@ -31,12 +31,12 @@ const AdedToCart:FC<IAdedToCartProps> = ({ cardItem, widthBtn , active }) => {
         widthBtn={widthBtn}
         active={active}
         onClick={(e) => addedItemToCart(e)}
-        className={`${findItemInCart && "border border-gray-300 "}  `}
+        className={`${findItemInCart && "border border-gray-300 "} text-center `}
       >
         {!findItemInCart || !findItemInCart.quantity ? (
           "В Кошик"
         ) : (
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center justify-center">
             <span
               className="text-2xl hover:text-red-600 transition w-[30px] "
               onClick={(e) => deleteItemInCart(e)}

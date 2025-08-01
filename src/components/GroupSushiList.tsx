@@ -4,24 +4,35 @@ import { ItemProduct } from "../../types";
 import SkeletonCard from "../UI/SkeletonCard";
 import { Link } from "react-router-dom";
 
-interface IMainDeliveryDnepr {
-  dataDelivery: ItemProduct[];
+interface IGroupSushiListProps {
+  dataList: ItemProduct[];
   isLoading: boolean;
+  title?: string;
+  searchValue?: string;
+  type?: string;
 }
 
-const MainDeliveryDnepr: FC<IMainDeliveryDnepr> = ({
-  dataDelivery,
+const GroupSushiList: FC<IGroupSushiListProps> = ({
+  dataList,
   isLoading,
+  title,
+  searchValue,
+  type,
 }) => {
   return (
-    <div>
-      <h2 className="text-3xl font-semibold my-6">Доставка суші Дніпро</h2>
-      <div className="grid grid-cols-4 gap-4">
+    <>
+      <h2 className="text-3xl font-semibold my-6">
+        {type === "search" && searchValue
+          ? `${title} ${searchValue && searchValue}`
+          : title}
+      </h2>
+
+      <div className="grid grid-cols-4 gap-4 w-full">
         {isLoading
           ? Array.from({ length: 8 }).map((_, index) => (
               <SkeletonCard key={index} />
             ))
-          : dataDelivery.map((cardItem) => (
+          : dataList.map((cardItem) => (
               <Link
                 to={`/product/${cardItem.name}`}
                 key={cardItem.id}
@@ -31,8 +42,8 @@ const MainDeliveryDnepr: FC<IMainDeliveryDnepr> = ({
               </Link>
             ))}
       </div>
-    </div>
+    </>
   );
 };
 
-export default MainDeliveryDnepr;
+export default GroupSushiList;

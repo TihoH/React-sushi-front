@@ -1,11 +1,12 @@
 import { Search, ShoppingCart, User } from "lucide-react";
 import React from "react";
-import { useStore } from "../../store/app";
+import { useAppStore } from "../../store/app";
 import { Link } from "react-router-dom";
+import { useCartStore } from "../../store/cart";
 
 const HeaderTopRigthInfo = () => {
-  const { activeAdedCartPopup, cart , setActiveSearch , activeSearch } = useStore((state) => state);
-    
+  const { setActiveSearch , activeSearch } = useAppStore((state) => state);
+      const { activeAdedCartPopup, cart  } = useCartStore((state) => state);
   return (
     <div className="flex gap-14 items-center">
       <div className="cursor-pointer p-2" onClick={ () => setActiveSearch(!activeSearch) }>

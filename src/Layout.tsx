@@ -2,12 +2,12 @@ import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Main from "./components/Main";
-import { useStore } from "./store/app";
+import { useAppStore } from "./store/app";
 import Search from "./components/Search";
 import { useEffect } from "react";
 
 const Layout = () => {
-  const { activeSearch } = useStore((state) => state);
+  const { activeSearch } = useAppStore((state) => state);
 
     useEffect(() => {
     if (activeSearch) {

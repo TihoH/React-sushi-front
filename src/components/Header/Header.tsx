@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import HeaderTop from "./HeaderTop";
 import HeaderLinks from "./HeaderLinks";
-import { useStore } from "../../store/app";
+import { useAppStore } from "../../store/app";
 
 const Header = () => {
   const [showTop, setShowTop] = useState(true);
   const lastScrollY = useRef(0);
-  const { activeSearch } = useStore((state) => state);
+  const { activeSearch } = useAppStore((state) => state);
 
   useEffect(() => {
     const handleScroll = () => {
