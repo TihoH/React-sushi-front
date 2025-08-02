@@ -13,24 +13,28 @@ const CartItemDescription: FC<ICartItemDescriptionProps> = ({
   cartItem,
   flagAdedToOrder,
 }) => {
-  const { deleteItemInCart, adedToOrderProdut , deletaToOrderProdut } = useCartStore(
-    (state) => state
-  );
+  const { deleteItemInCart, adedToOrderProdut, deletaToOrderProdut } =
+    useCartStore((state) => state);
   return (
     <div className="flex items-center justify-between w-full">
       <div className="flex flex-col gap-2">
         <h2 className="text-xl font-semibold">{cartItem.name}</h2>
         <span className="text-myTextGray">
           {cartItem.weight} г /{" "}
-          <span className="text-black">{cartItem.price}</span>
+          <span className="text-black">{cartItem.price} грн</span>
         </span>
       </div>
       <div className="flex  items-center gap-10">
         <div className="text-xl text-myTextGray">
           {cartItem.quantity && (
-            <span> {cartItem.quantity * cartItem.price} грн </span>
+            <span>
+              {flagAdedToOrder && cartItem.quantity < 2 ? (
+                <span className="text-green-700">безкоштовно</span>
+              ) : (
+                cartItem.quantity * cartItem.price + "грн "
+              )}
+            </span>
           )}
-
         </div>
         {/* START Отрисовка кнопки добавления или удаления */}
         {!flagAdedToOrder ? (
@@ -47,12 +51,19 @@ const CartItemDescription: FC<ICartItemDescriptionProps> = ({
           <div className="flex gap-2 items-center justify-center">
             <span
               className="text-2xl hover:text-red-600 transition w-[30px] "
-              onClick={ cartItem.quantity != 0 ? () => deletaToOrderProdut(cartItem.id) : undefined }
+              onClick={
+                cartItem.quantity != 0
+                  ? () => deletaToOrderProdut(cartItem.id)
+                  : undefined
+              }
             >
               -
             </span>
             <span> {cartItem.quantity} шт </span>
-            <span className="text-2xl hover:text-green-600 transition w-[30px]" onClick={ () => adedToOrderProdut(cartItem.id) }>
+            <span
+              className="text-2xl hover:text-green-600 transition w-[30px]"
+              onClick={() => adedToOrderProdut(cartItem.id)}
+            >
               +
             </span>
           </div>

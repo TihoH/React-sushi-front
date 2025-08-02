@@ -9,7 +9,7 @@ interface ICartItemsListProps {
 }
 
 const CartItemsList: FC<ICartItemsListProps> = ({ cart }) => {
-  const { clearCart } = useCartStore((state) => state);
+  const { clearCart  } = useCartStore((state) => state);
 
   return (
     <div className="flex flex-col  min-h-full">
@@ -26,7 +26,7 @@ const CartItemsList: FC<ICartItemsListProps> = ({ cart }) => {
           <CartItem key={cartItem.id} cartItem={cartItem} />
         ))}
       </div>
-        <AdedToOrder />
+        {cart.length ? <AdedToOrder /> : ''}
     </div>
   );
 };

@@ -3,11 +3,19 @@ import { useGetProduct } from "../hooks/useGetProduct.ts";
 import { ArrowBigLeftDash } from "lucide-react";
 import CardProductInfo from "../components/CardProductInfo";
 import SkeletonPageProduct from "../UI/SkeletonPageProduct";
+import RecomendedProducts from "../components/RecomendedProducts.tsx";
+import { useEffect } from "react";
 
 const CardProduct = () => {
   const idProduct = useLocation().state?.id;
-  const { product, isLoading } = useGetProduct(idProduct);
+  const { product } = useGetProduct(idProduct);
   const navigate = useNavigate();
+
+    const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
 
   if (!product) {
     return <SkeletonPageProduct />;
@@ -31,6 +39,9 @@ const CardProduct = () => {
           <img className="w-full rounded-lg" src={product?.imageUrl} alt="" />
         </div>
         <CardProductInfo product={product} />
+      </div>
+      <div>
+        <RecomendedProducts />
       </div>
     </div>
   );

@@ -6,17 +6,19 @@ import CardProduct from "./pages/CardProduct";
 import ListCurrentCategory from "./pages/ListCurrentCategory";
 import Cart from "./pages/Cart";
 
-
 const Router = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Main /> }></Route>
-          <Route path="product" element={<CardProduct /> }></Route>
-          <Route path="category/:name" element={<ListCurrentCategory /> }></Route>
-               <Route path="product/:name" element={<CardProduct /> }></Route>
-                         <Route path="cart" element={<Cart /> }></Route>
+          <Route index element={<Main />}></Route>
+          <Route path="product" element={<CardProduct />}></Route>
+          <Route
+            path="category/:name"
+            element={<ListCurrentCategory />}
+          ></Route>
+          <Route path="product/:name" element={<CardProduct />}></Route>
+          <Route path="cart" element={<Cart />}></Route>
         </Route>
       </Routes>
     </>

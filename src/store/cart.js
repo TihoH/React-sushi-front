@@ -23,7 +23,7 @@ export const useCartStore = create(
         "https://cdn.wesushi.com.ua/ws-uk/products/0001-palichki-dlya-yizhi-bezk-we.png?&w=280&h=280&format=auto&mode=fit&q=80",
       weight: "-",
       price: 5,
-      quantity: 1,
+      quantity:1,
     },
     {
       name: "Соєвий соус 40 мл",
@@ -83,12 +83,12 @@ export const useCartStore = create(
       adedToOrderProdut: (val) => {
         const adedToOrderProducts = get().adedToOrderProducts ;
         set({ adedToOrderProducts: adedToOrderProducts.map( item => item.id === val ? {...item , quantity: item.quantity + 1} : item ) })
-        console.log(get().cart , get().adedToOrderProducts)
+
       },
            deletaToOrderProdut: (val) => {
         const adedToOrderProducts = get().adedToOrderProducts ;
         set({ adedToOrderProducts: adedToOrderProducts.map( item => item.id === val ? {...item , quantity: item.quantity - 1} : item ) })
-        console.log(get().cart , get().adedToOrderProducts)
+
       }
 
     }),

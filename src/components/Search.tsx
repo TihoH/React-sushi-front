@@ -10,7 +10,7 @@ const Search = () => {
   const { dataSearch, isLoadingSearch } = useGetDataSearch(searchValue);
   const containerRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+  useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
         containerRef.current &&
@@ -27,7 +27,10 @@ const Search = () => {
   }, [setActiveSearch]);
 
   return (
-    <div className=" min-h-full bg-white z-10 pt-[130px] flex flex-col items-center" ref={containerRef}>
+    <div
+      className=" min-h-full bg-white z-10 pt-[130px] flex flex-col items-center"
+      ref={containerRef}
+    >
       <div className="flex items-center gap-4">
         <div className="w-[500px] relative">
           <input
@@ -38,7 +41,7 @@ const Search = () => {
           />
           <SearchIcon className="absolute top-1/2 left-2 -translate-y-1/2" />
         </div>
-        {isLoadingSearch && searchValue  ? (
+        {isLoadingSearch && searchValue ? (
           <div className="h-[60px] w-[60px] flex items-center justify-center border border-gray-400 rounded-lg mr-2">
             <div className="w-6 h-6 border-4 border-t-transparent border-black rounded-full animate-spin"></div>
           </div>
@@ -49,17 +52,17 @@ const Search = () => {
           />
         )}
       </div>
-      {dataSearch?.length && searchValue && (
+      {dataSearch?.length && searchValue ? (
         <div className="max-w-[1200px] w-full">
-          
           <SearchList
             dataList={dataSearch}
             isLoadingSearch={isLoadingSearch}
             searchValue={searchValue}
           />
         </div>
-      ) }
-      {/* { searchValue && dataSearch?.length  ? <span>Ничего не найдено</span> : '122' } */}
+      ) : (
+        <span>{searchValue ? "Нічого не знайдено" : "Додайте ваш запит"}</span>
+      )}
     </div>
   );
 };
