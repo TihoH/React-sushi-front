@@ -4,12 +4,12 @@ import CustomButton from "../UI/CustomButton";
 import { ItemProduct } from "../../types";
 
 interface IAdedToCartProps {
-cardItem: ItemProduct ,
-widthBtn?: number ,
-active?: boolean
+  cardItem: ItemProduct;
+  widthBtn?: number;
+  active?: boolean;
 }
 
-const AdedToCart:FC<IAdedToCartProps> = ({ cardItem, widthBtn , active }) => {
+const AdedToCart: FC<IAdedToCartProps> = ({ cardItem, widthBtn, active }) => {
   const { adedToCart, cart, deleteItemCart } = useCartStore((state) => state);
 
   const findItemInCart = cart.find((item) => item.id === cardItem.id);
@@ -26,12 +26,12 @@ const AdedToCart:FC<IAdedToCartProps> = ({ cardItem, widthBtn , active }) => {
     deleteItemCart(cardItem.id);
   };
   return (
-    <div className="flex justify-between items-center">
+    <div className="">
       <CustomButton
         widthBtn={widthBtn}
         active={active}
         onClick={(e) => addedItemToCart(e)}
-        className={`${findItemInCart && "border border-gray-300 "} text-center `}
+        className={`${findItemInCart && "border border-gray-300 "}  `}
       >
         {!findItemInCart || !findItemInCart.quantity ? (
           "В Кошик"
@@ -43,7 +43,10 @@ const AdedToCart:FC<IAdedToCartProps> = ({ cardItem, widthBtn , active }) => {
             >
               -
             </span>
-            <span> {findItemInCart.quantity} шт </span>
+            <div className="flex">
+          
+              <span>{findItemInCart.quantity}</span> <span>шт</span>
+            </div>
             <span className="text-2xl hover:text-green-600 transition w-[30px] ">
               +
             </span>

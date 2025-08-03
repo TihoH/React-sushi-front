@@ -6,12 +6,12 @@ import CartIssue from "../components/Cart/CartIssue";
 const Cart = () => {
   const { cart , adedToOrderProducts } = useCartStore((state) => state);
   return (
-      <div className="flex justify-between gap-10 my-4">
+      <div className="flex flex-col md:flex-row justify-between gap-10  md:my-4">
         <div className="w-full">
           <CartItemsList cart={cart} />
         </div>
-        <div className="max-w-[500px] w-full  ">
-            <div className="fixed top-[200px] w-[500px]">
+        <div className="w-full md:max-w-[500px]   ">
+            <div className=" md:fixed top-[200px] w-full md:w-[500px]">
               <CartIssue cart={cart} adedToOrderProducts={adedToOrderProducts} />
             </div>
         </div>

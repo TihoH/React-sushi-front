@@ -16,10 +16,10 @@ const CartItemDescription: FC<ICartItemDescriptionProps> = ({
   const { deleteItemInCart, adedToOrderProdut, deletaToOrderProdut } =
     useCartStore((state) => state);
   return (
-    <div className="flex items-center justify-between w-full">
-      <div className="flex flex-col gap-2">
+    <div className="flex flex-col md:flex-row items-center justify-between w-full">
+      <div className="flex items-center md:items-start justify-between md:flex-col gap-2 w-full my-1">
         <h2 className="text-xl font-semibold">{cartItem.name}</h2>
-        <span className="text-myTextGray">
+        <span className="text-myTextGray border">
           {cartItem.weight} г /{" "}
           <span className="text-black">{cartItem.price} грн</span>
         </span>
@@ -59,7 +59,10 @@ const CartItemDescription: FC<ICartItemDescriptionProps> = ({
             >
               -
             </span>
-            <span> {cartItem.quantity} шт </span>
+                       <div className="flex">
+          
+              <span>{cartItem.quantity}</span> <span>шт</span>
+            </div>
             <span
               className="text-2xl hover:text-green-600 transition w-[30px]"
               onClick={() => adedToOrderProdut(cartItem.id)}

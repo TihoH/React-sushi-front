@@ -11,11 +11,11 @@ interface ICartItemProps {
 const CartItem: FC<ICartItemProps> = ({ cartItem, flagAdedToOrder = false }) => {
 
   return (
-    <div className="flex gap-2 shadow-md p-2 hover:shadow-2xl transition cursor-pointer">
+    <div className="flex flex-col md:flex-row gap-2 shadow-md p-2 hover:shadow-2xl transition cursor-pointer">
       <Link to={`/product/${cartItem.name}`} state={{ id: cartItem.id }}>
         <img
           src={cartItem.imageUrl}
-          className="max-w-[150px]  rounded-md "
+          className="w-full md:max-w-[150px]  rounded-md "
           alt="cart item image"
         />
       </Link>
