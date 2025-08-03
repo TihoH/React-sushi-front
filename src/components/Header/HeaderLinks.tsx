@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useAppStore } from "../../store/app";
 
-const HeaderLinks = () => {
+const HeaderLinks = ({activeBurgerMenu , setActiveBurgerMenu  }) => {
   const { name } = useParams();
+  const {setActiveCategory} = useAppStore(state => state)
 
 
   const links = [
@@ -18,12 +21,19 @@ const HeaderLinks = () => {
     { link: "Доповнення", id: 11 , category: 'adedToOrder'},
   ];
   return (
-    <ul className=" flex justify-between text-myTextGray px-7 font-medium shadow-lg  -mx-[calc((100vw-100%)/2)]">
+    <ul   className={`
+    transition-opacity duration-300 ease-in-out
+    ${activeBurgerMenu ? 'opacity-100  pointer-events-auto' : 'opacity-0 md:opacity-100 flex '}
+    md:flex-row justify-between text-myTextGray px-7 font-medium shadow-lg
+    absolute top-14 border-t left-0 right-0 z-20 bg-white py-2
+    -mx-[calc((100vw-100%)/2)]
+  `}>
       {links.map((item) => (
-        <li className="hover:text-yellow-600 transition py-4" key={item.id}>
+        <li className="hover:text-yellow-600 transition py-1 md:py-4" key={item.id}>
           <Link
             className={` ${name === item.category ? "text-yellow-600" : ""} `}
             to={`/category/${item.category}`}
+            onClick={ () => {setActiveBurgerMenu(false) , setActiveCategory(item.link)} }
           >
             {item.link}
           </Link>

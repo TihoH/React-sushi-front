@@ -22,7 +22,7 @@ const CardProduct = () => {
   }
 
   return (
-    <div className="mt-5">
+    <div className=" sm:mt-5 ">
       <div>
         <button
           className="flex items-center hover:text-yellow-800 group"
@@ -34,7 +34,7 @@ const CardProduct = () => {
           НАЗАД
         </button>
       </div>
-      <div className="flex gap-10 mt-5 ">
+      <div className=" flex flex-col  md:flex md:flex-row gap-10 mt-5 ">
         <div className="max-w-[600px] w-full">
           <img className="w-full rounded-lg" src={product?.imageUrl} alt="" />
         </div>

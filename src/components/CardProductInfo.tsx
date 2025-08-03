@@ -16,8 +16,8 @@ const CardProductInfo: FC<ICardProductsInfoProps> = ({ product }) => {
 
   return (
       <div className="w-full">
-        <div className="flex flex-col gap-6 ">
-          <h1 className="text-3xl font-bold ">
+        <div className="flex flex-col gap-2 sm:gap-6 ">
+          <h1 className="text-xl sm:text-3xl font-bold ">
             {product.name.toLocaleUpperCase()}
           </h1>
           <p className="text-2xl text-myTextGray">
@@ -25,11 +25,11 @@ const CardProductInfo: FC<ICardProductsInfoProps> = ({ product }) => {
             <span>{product.weight} г</span>
           </p>
           <div className="max-w-[600px] flex  justify-between items-center">
-            <span className="text-[45px] font-medium">{product.price} грн</span>
+            <span className=" text-3xl sm:text-[45px] font-medium">{product.price} грн</span>
             <WrappToButtonOrder cardItem={product} widthBtn={200} />
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mt-4 ">
           <div className="flex gap-2">
             <Gift color="#e2ad50" />
             <span>За покупку вам буде нараховано 32 балів</span>

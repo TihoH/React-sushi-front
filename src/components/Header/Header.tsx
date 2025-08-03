@@ -7,12 +7,13 @@ const Header = () => {
   const [showTop, setShowTop] = useState(true);
   const lastScrollY = useRef(0);
   const { activeSearch } = useAppStore((state) => state);
+  const [activeBurgerMenu, setActiveBurgerMenu] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log('fqfq')
       const currentY = window.scrollY;
- 
+
       if (currentY > lastScrollY.current && currentY > 100 && !activeSearch) {
         setShowTop(false); // Скроллим вниз
       } else {
@@ -33,10 +34,16 @@ const Header = () => {
           showTop ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <HeaderTop />
-        <HeaderLinks />
+        <HeaderTop
+          setActiveBurgerMenu={setActiveBurgerMenu}
+          activeBurgerMenu={activeBurgerMenu}
+        />
+        <HeaderLinks
+          setActiveBurgerMenu={setActiveBurgerMenu}
+          activeBurgerMenu={activeBurgerMenu}
+        />
       </div>
-      <div className="h-[120px] " />
+      <div className="h-[70px] md:h-[120px] " />
     </div>
   );
 };

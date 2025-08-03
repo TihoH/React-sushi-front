@@ -6,9 +6,13 @@ export const useAppStore = create(
     (set, get) => ({
       currentCategory: "deliveryDnepr",
       activeSearch: false ,
+      activeCategory: '' ,
       setCurrentCategory: (val) => set({ currentCategory: val }),
       setActiveSearch: (val) => {
         set({ activeSearch: val })
+      },
+      setActiveCategory: (val) => {
+        set({ activeCategory: val })
       }
     }),
   )

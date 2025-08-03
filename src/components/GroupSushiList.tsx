@@ -27,7 +27,7 @@ const GroupSushiList: FC<IGroupSushiListProps> = ({
           : title}
       </h2>
 
-      <div className="grid grid-cols-4 gap-4 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
         {isLoading
           ? Array.from({ length: 8 }).map((_, index) => (
               <SkeletonCard key={index} />
@@ -36,7 +36,7 @@ const GroupSushiList: FC<IGroupSushiListProps> = ({
               <Link
                 to={`/product/${cardItem.name}`}
                 key={cardItem.id}
-                state={{ id: cardItem.id }}
+                state={{ id: cardItem.id }} 
               >
                 <CardItem cardItem={cardItem} />
               </Link>

@@ -13,13 +13,23 @@ export default function App({ sliderDataList }) {
     <div>
       {/* Навигационные кнопки сверху */}
 
-    <CustomBtnSwiper swiperRef={swiperRef} />
+      <CustomBtnSwiper swiperRef={swiperRef} />
       <Swiper
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        slidesPerView={4}
+        // slidesPerView={4}
         spaceBetween={30}
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+        }}
         className="mySwiper min-h-[500px]"
       >
         {sliderDataList?.map((slideItem) => (

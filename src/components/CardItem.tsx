@@ -10,7 +10,7 @@ interface ICardItemProps {
 const CardItem: FC<ICardItemProps> = ({ cardItem }) => {
 
   return (
-    <div className="rounded-lg shadow-xl w-full hover:shadow-gray-400 transition cursor-pointer h-[450px]    ">
+    <div className="rounded-lg shadow-xl w-full hover:shadow-gray-400 transition cursor-pointer min-h-[450px]    ">
       <img src={cardItem.imageUrl} alt="sushi image" className="rounded-t-md" />
       <div className="p-4 flex gap-4 flex-col justify-between ">
         <div className="flex justify-between">

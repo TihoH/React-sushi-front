@@ -17,7 +17,7 @@ const images = [...baseImages, ...baseImages];
 
 export default function BannerSlide() {
   return (
-    <div className="-mx-[calc((100vw-100%)/2)] mt-2">
+    <div className="-mx-[calc((100vw-100%)/2)] mt-2 hidden md:block">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         // navigation
