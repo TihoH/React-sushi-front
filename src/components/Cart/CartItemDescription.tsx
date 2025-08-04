@@ -3,6 +3,7 @@ import { useCartStore } from "../../store/cart";
 import { ItemProduct } from "../../../types";
 import WrappToButtonOrder from "../WrappToButtonOrder";
 import { X } from "lucide-react";
+import CustomButton from "../../UI/CustomButton";
 
 interface ICartItemDescriptionProps {
   cartItem: ItemProduct;
@@ -16,15 +17,17 @@ const CartItemDescription: FC<ICartItemDescriptionProps> = ({
   const { deleteItemInCart, adedToOrderProdut, deletaToOrderProdut } =
     useCartStore((state) => state);
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between w-full">
+    <div className="flex flex-col md:flex-row items-center justify-between w-full ">
       <div className="flex items-center md:items-start justify-between md:flex-col gap-2 w-full my-1">
-        <h2 className="text-xl font-semibold">{cartItem.name}</h2>
-        <span className="text-myTextGray border">
+        <h2 className="hidden md:block text-xl font-semibold">
+          {cartItem.name}
+        </h2>
+        <span className="text-myTextGray hidden md:block">
           {cartItem.weight} г /{" "}
           <span className="text-black">{cartItem.price} грн</span>
         </span>
       </div>
-      <div className="flex  items-center gap-10">
+      <div className="flex justify-between w-full items-center md:pl-10 ">
         <div className="text-xl text-myTextGray">
           {cartItem.quantity && (
             <span>
@@ -38,9 +41,9 @@ const CartItemDescription: FC<ICartItemDescriptionProps> = ({
         </div>
         {/* START Отрисовка кнопки добавления или удаления */}
         {!flagAdedToOrder ? (
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 relative ">
             <WrappToButtonOrder cardItem={cartItem} active={false} />
-            <div>
+            <div className="absolute md:static -top-[110px] -right-2 ">
               <X
                 className="opacity-20 hover:opacity-100 transition border border-gray-400 rounded-lg mr-2 hover:bg-black hover:text-white duration-300 p-1 h-[30px] w-[30px]"
                 onClick={() => deleteItemInCart(cartItem.id)}
@@ -48,7 +51,7 @@ const CartItemDescription: FC<ICartItemDescriptionProps> = ({
             </div>
           </div>
         ) : (
-          <div className="flex gap-2 items-center justify-center">
+          <CustomButton active={false} className="mt-2 md:mt-0 flex gap-2 items-center">
             <span
               className="text-2xl hover:text-red-600 transition w-[30px] "
               onClick={
@@ -59,8 +62,7 @@ const CartItemDescription: FC<ICartItemDescriptionProps> = ({
             >
               -
             </span>
-                       <div className="flex">
-          
+            <div className="flex">
               <span>{cartItem.quantity}</span> <span>шт</span>
             </div>
             <span
@@ -69,7 +71,7 @@ const CartItemDescription: FC<ICartItemDescriptionProps> = ({
             >
               +
             </span>
-          </div>
+          </CustomButton>
         )}
 
         {/* END Отрисовка кнопки добавления или удаления */}

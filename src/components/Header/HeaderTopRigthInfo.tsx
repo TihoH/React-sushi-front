@@ -35,10 +35,10 @@ const HeaderTopRigthInfo = ({ setActiveBurgerMenu, activeBurgerMenu }) => {
         <span>Товар додано в кошик</span>
       </div>
       {/* Burdger */}
-    <Menu
+    {/* <Menu
         className=" md:hidden absolute z-30 top-14 -right-2 border w-[50px] h-[50px] p-1 rounded-md bg-white "
         onClick={() => setActiveBurgerMenu(!activeBurgerMenu)}
-      />
+      /> */}
       {/* Burdger END */}
     </div>
   );

@@ -25,7 +25,7 @@ const CartIssue = ({ cart, adedToOrderProducts }) => {
         <h4 className="text-black md:text-2xl">
           {cart.length ? orderPrice(cart, adedToOrderProducts) + "грн" : ""}{" "}
         </h4>
-        <CustomButton className="mt-3 font-semibold  ">
+        <CustomButton className="mt-3 font-semibold fixed md:static -bottom-[4px] -md:bottom-5 left-1/2 -translate-x-1/2 md:translate-x-0 w-full  rounded-none ">
           {cart.length > 0 ? (
             <>
               <span>Оформити</span>

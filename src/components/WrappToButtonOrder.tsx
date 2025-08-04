@@ -26,12 +26,12 @@ const AdedToCart: FC<IAdedToCartProps> = ({ cardItem, widthBtn, active }) => {
     deleteItemCart(cardItem.id);
   };
   return (
-    <div className="">
+    <>
       <CustomButton
         widthBtn={widthBtn}
-        active={active}
+        active={findItemInCart && false}
         onClick={(e) => addedItemToCart(e)}
-        className={`${findItemInCart && "border border-gray-300 "}  `}
+        className={`${findItemInCart && "border border-gray-300 bg-gray-100 "}  `}
       >
         {!findItemInCart || !findItemInCart.quantity ? (
           "В Кошик"
@@ -53,7 +53,7 @@ const AdedToCart: FC<IAdedToCartProps> = ({ cardItem, widthBtn, active }) => {
           </div>
         )}
       </CustomButton>
-    </div>
+    </>
   );
 };
 

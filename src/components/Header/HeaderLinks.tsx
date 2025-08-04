@@ -21,17 +21,12 @@ const HeaderLinks = ({activeBurgerMenu , setActiveBurgerMenu  }) => {
     { link: "Доповнення", id: 11 , category: 'adedToOrder'},
   ];
   return (
-    <ul   className={`
-    transition-opacity duration-300 ease-in-out
-    ${activeBurgerMenu ? 'opacity-100  pointer-events-auto' : 'opacity-0 md:opacity-100 flex '}
-    md:flex-row justify-between text-myTextGray px-7 font-medium shadow-lg
-    absolute top-14 border-t left-0 right-0 z-20 bg-white py-2
-    -mx-[calc((100vw-100%)/2)]
-  `}>
+    <ul   className={` flex justify-between  md:px-4  absolute top-14 border-t left-0 right-0 z-20 bg-white py-4 md:py-2
+    -mx-[calc((100vw-100%)/2)] shadow-lg  overflow-x-auto whitespace-nowrap scroll-smooth gap-3  `}>
       {links.map((item) => (
         <li className="hover:text-yellow-600 transition py-1 md:py-4" key={item.id}>
           <Link
-            className={` ${name === item.category ? "text-yellow-600" : ""} `}
+            className={` ${name === item.category ? "text-yellow-600" : ""} bg-gray-100 md:bg-transparent px-4 py-2 rounded-xl `}
             to={`/category/${item.category}`}
             onClick={ () => {setActiveBurgerMenu(false) , setActiveCategory(item.link)} }
           >
