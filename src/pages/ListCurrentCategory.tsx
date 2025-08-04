@@ -11,7 +11,7 @@ const ListCurrentCategory = () => {
 
   return (
     <div>
-      <h1 className="text-xl text-myTextGray  md:mt-4 md:text-2xl ">{activeCategory}</h1>
+      <h1 className="text-xl text-myTextGray  md:mt-4 md:text-2xl mt-14 ">{activeCategory}</h1>
 
       <GroupSushiList dataList={data} isLoading={isLoading} title={""} />
     </div>

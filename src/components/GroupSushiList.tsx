@@ -21,7 +21,7 @@ const GroupSushiList: FC<IGroupSushiListProps> = ({
 }) => {
   return (
     <>
-      <h2 className="text-3xl font-semibold my-6">
+      <h2 className="text-3xl font-semibold my-4 md:mt-14">
         {type === "search" && searchValue
           ? `${title} ${searchValue && searchValue}`
           : title}
