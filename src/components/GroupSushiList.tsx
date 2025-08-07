@@ -4,6 +4,7 @@ import { ItemProduct } from "../../types";
 import SkeletonCard from "../UI/SkeletonCard";
 import { Link } from "react-router-dom";
 
+
 interface IGroupSushiListProps {
   dataList: ItemProduct[];
   isLoading: boolean;
@@ -19,9 +20,10 @@ const GroupSushiList: FC<IGroupSushiListProps> = ({
   searchValue,
   type,
 }) => {
+
   return (
     <>
-      <h2 className="text-3xl font-semibold my-4 md:mt-14">
+      <h2 className="text-3xl font-semibold my-4 mt-14">
         {type === "search" && searchValue
           ? `${title} ${searchValue && searchValue}`
           : title}

@@ -1,10 +1,10 @@
 import React from "react";
 import CustomButton from "../../UI/CustomButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { orderPrice } from '../../utils/cart';
 
 const CartIssue = ({ cart, adedToOrderProducts }) => {
-    const price = orderPrice(cart, adedToOrderProducts)
+    const navigate = useNavigate()
 
   return (
     <div className="p-4 text-myTextGray text-xl shadow-xl rounded-md">
@@ -25,7 +25,7 @@ const CartIssue = ({ cart, adedToOrderProducts }) => {
         <h4 className="text-black md:text-2xl">
           {cart.length ? orderPrice(cart, adedToOrderProducts) + "грн" : ""}{" "}
         </h4>
-        <CustomButton className="mt-3 font-semibold fixed md:static -bottom-[4px] -md:bottom-5 left-1/2 -translate-x-1/2 md:translate-x-0 w-full  rounded-none ">
+        <CustomButton onClick={ cart.length ? () => navigate('/ChekoutOrder') : null } className="mt-3 font-semibold fixed md:static -bottom-[4px] -md:bottom-5 left-1/2 -translate-x-1/2 md:translate-x-0 w-full  rounded-none ">
           {cart.length > 0 ? (
             <>
               <span>Оформити</span>

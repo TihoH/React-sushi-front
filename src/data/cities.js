@@ -1,0 +1,22 @@
+export const cities = [
+  { id: 1, name: "Київ", link: "kyiv" },
+  { id: 2, name: "Львів", link: "lviv" },
+  { id: 3, name: "Одеса", link: "odesa" },
+  { id: 4, name: "Харків", link: "kharkiv" },
+  { id: 5, name: "Дніпро", link: "dnipro" },
+  { id: 6, name: "Запоріжжя", link: "zaporizhzhia" },
+  { id: 7, name: "Івано-Франківськ", link: "ivano-frankivsk" },
+  { id: 8, name: "Тернопіль", link: "ternopil" },
+  { id: 9, name: "Чернівці", link: "chernivtsi" },
+  { id: 10, name: "Полтава", link: "poltava" },
+  { id: 11, name: "Рівне", link: "rivne" },
+  { id: 12, name: "Хмельницький", link: "khmelnytskyi" },
+  { id: 13, name: "Ужгород", link: "uzhhorod" },
+  { id: 14, name: "Суми", link: "sumy" },
+  { id: 15, name: "Черкаси", link: "cherkasy" },
+  { id: 16, name: "Житомир", link: "zhytomyr" },
+  { id: 17, name: "Миколаїв", link: "mykolaiv" },
+  { id: 18, name: "Кропивницький", link: "kropyvnytskyi" },
+  { id: 19, name: "Вінниця", link: "vinnytsia" },
+  { id: 20, name: "Чернігів", link: "chernihiv" }
+];

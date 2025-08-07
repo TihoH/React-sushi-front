@@ -3,12 +3,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { useAppStore } from "../store/app";
 import SearchList from "./SearchList";
 import { useGetDataSearch } from "../hooks/useGetSearchData";
+import { useLocation, useParams } from "react-router-dom";
 
 const Search = () => {
   const { setActiveSearch } = useAppStore((state) => state);
   const [searchValue, setSearchValue] = useState("");
   const { dataSearch, isLoadingSearch } = useGetDataSearch(searchValue);
   const containerRef = useRef<HTMLDivElement>(null);
+  const location = useLocation()
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -23,16 +25,22 @@ const Search = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+     
     };
+
   }, [setActiveSearch]);
+
+  useEffect( () => {
+       setActiveSearch(false);
+  } , [location.pathname])
 
   return (
     <div
-      className=" min-h-full bg-white z-10 pt-[130px] flex flex-col items-center"
+      className=" min-h-full bg-white z-10 pt-[150px] flex flex-col items-center"
       ref={containerRef}
     >
       <div className="flex items-center gap-4">
-        <div className="w-[500px] relative">
+        <div className="md:w-[500px] relative">
           <input
             type="text"
             placeholder="Пошук"
@@ -53,7 +61,7 @@ const Search = () => {
         )}
       </div>
       {dataSearch?.length && searchValue ? (
-        <div className="max-w-[1200px] w-full">
+        <div className="md:max-w-[1200px] md:w-full px-2 md:px-0">
           <SearchList
             dataList={dataSearch}
             isLoadingSearch={isLoadingSearch}

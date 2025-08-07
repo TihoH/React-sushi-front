@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from "react";
+import { useAppStore } from "../../store/app";
+import CitiesModal from "../Modal/CitiesModal";
 
 const HeaderTopLeftInfo = () => {
-    return (
-        <div className=' gap-12 hidden md:flex'>
-            <a href="/">Вишневе</a>
-             <a href="/">UA</a>
-              <a href="/">066 968 30 10</a>
-        </div>
-    );
+  const { activeCities, openSitiesModal } = useAppStore((state) => state);
+
+  return (
+    <>
+      <div className=" gap-12 flex">
+        <button
+          className="border-b border-dashed border-black hover:text-blue-800"
+          onClick={ () => openSitiesModal(true) }
+        >
+          {activeCities}
+        </button>
+        <a href="/" className="hidden md:flex">UA</a>
+        <a href="/" className="hidden md:flex">066 968 30 10</a>
+      </div>
+
+    </>
+  );
 };
 
 export default HeaderTopLeftInfo;

@@ -5,11 +5,10 @@ import SkeletonCard from "../UI/SkeletonCard";
 
 const RecomendedProducts = () => {
   const { productRecomednded, isLoading } = useGetRandomRecomendedSushi();
-  console.log(productRecomednded);
 
   return (
-    <div>
-      <h2 className="mt-5 text-3xl mb-2">Рекомендовані</h2>
+    <>
+      <h2 className="mt-2 text-3xl mb-2 ">Рекомендовані</h2>
       {productRecomednded ? (
         <Slider sliderDataList={productRecomednded} />
       ) : (
@@ -19,7 +18,7 @@ const RecomendedProducts = () => {
           ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

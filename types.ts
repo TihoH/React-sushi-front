@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 export type ItemProduct = {
     category:string ,
     createdAt:string ,
@@ -10,4 +11,16 @@ export type ItemProduct = {
     updatedAt:string ,
     weight: string
     quantity?: number | undefined
+}
+
+export interface ICities {
+    id:number ,
+    name: string ,
+    Link: string ,
+}
+
+export interface IRegisterationUser {
+    name: string ,
+    email: string ,
+    password: string
 }
