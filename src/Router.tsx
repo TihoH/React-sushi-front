@@ -7,6 +7,10 @@ import ListCurrentCategory from "./pages/ListCurrentCategory";
 import Cart from "./pages/Cart";
 import ChekoutOrder from "./pages/ChekoutOrder";
 import Login from "./pages/Login";
+import UserData from "./pages/UserData";
+import UserProfile from "./components/User/UserProfile";
+import UserOrders from "./components/User/UserOrders";
+import UserAdress from "./components/User/UserAdress";
 
 const Router = () => {
   return (
@@ -23,6 +27,12 @@ const Router = () => {
           <Route path="cart" element={<Cart />}></Route>
           <Route path="/ChekoutOrder" element={<ChekoutOrder />}></Route>
           <Route path="/Login" element={<Login />}></Route>
+          <Route path="/User" element={<UserData />}>
+            <Route index element={<UserProfile />} />
+            <Route path="/User/UserProfile" element={<UserProfile />} />
+            <Route path="/User/UserOrders" element={<UserOrders />} />
+               <Route path="/User/UserAdress" element={<UserAdress />} />
+          </Route>
         </Route>
       </Routes>
     </>

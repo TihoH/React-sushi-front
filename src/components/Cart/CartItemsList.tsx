@@ -9,24 +9,43 @@ interface ICartItemsListProps {
 }
 
 const CartItemsList: FC<ICartItemsListProps> = ({ cart }) => {
-  const { clearCart  } = useCartStore((state) => state);
+  const { clearCart } = useCartStore((state) => state);
 
   return (
-    <div className="flex flex-col  md:mt-0  min-h-full">
-      <div className=" flex flex-col md:flex-row md:justify-between md:items-center">
-        <h1 className="text-2xl md:text-3xl md:my-2">
-          {cart.length ? "Моє замовлення" : "Ваш кошик пустий "}
+    <div className="flex flex-col bg-white shadow-lg rounded-xl p-1 sm:p-4 md:p-6 min-h-full">
+      {/* Заголовок и кнопка очистки */}
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-2 sm:pb-3 md:pb-4 mb-3 sm:mb-4">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800">
+          {cart.length ? "Моє замовлення" : "Ваш кошик пустий"}
         </h1>
-        <button className="text-yellow-600 my-1 md:my-0 text-start" onClick={() => clearCart()}>
-          Очистити кошик
-        </button>
+        {cart.length > 0 && (
+          <button
+            className="text-red-500 hover:text-red-600 font-medium text-sm mt-1 md:mt-0 transition"
+            onClick={() => clearCart()}
+          >
+            Очистити кошик ✕
+          </button>
+        )}
       </div>
-      <div className="flex flex-col gap-4">
+
+      {/* Список товаров */}
+      <div className="flex flex-col gap-3 sm:gap-4">
         {cart.map((cartItem) => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
+          <div
+            key={cartItem.id}
+            className="bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition p-3 sm:p-4"
+          >
+            <CartItem cartItem={cartItem} />
+          </div>
         ))}
       </div>
-        {cart.length ? <AdedToOrder /> : ''}
+
+      {/* Кнопка оформления */}
+      {cart.length > 0 && (
+        <div className="mt-4 sm:mt-6 flex justify-end">
+          <AdedToOrder />
+        </div>
+      )}
     </div>
   );
 };

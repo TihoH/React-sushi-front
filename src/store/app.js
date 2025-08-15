@@ -5,6 +5,7 @@ export const useAppStore = create(
   persist(
     (set, get) => ({
       authUser: false,
+      userId: null,
       userAuthData: { name: "" },
       currentCategory: "deliveryDnepr",
       activeSearch: false,
@@ -30,6 +31,9 @@ export const useAppStore = create(
         })),
       setAuthUser: (val) => {
         set({ authUser: val });
+      },
+      setUserId: (val) => {
+        set({ userId: val });
       },
     }),
     {

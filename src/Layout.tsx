@@ -23,10 +23,10 @@ const Layout = () => {
   }, [activeSearch]);
 
   return (
-    <div className=" min-h-screen flex flex-col overflow-x-hidden">
+    <div className=" min-h-screen flex flex-col overflow-x-hidden max-w-[1980px] m-auto">
       <Header />
 
-      <main className="px-4 mt-2 flex-1">
+      <main className="px-4 mt-2 flex-1 flex flex-col min-h-0">
         <Outlet />
       </main>
 

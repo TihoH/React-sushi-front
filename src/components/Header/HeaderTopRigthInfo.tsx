@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import { useCartStore } from "../../store/cart";
 
 const HeaderTopRigthInfo = () => {
-  const { setActiveSearch, activeSearch , authUser , userAuthData} = useAppStore((state) => state);
+  const { setActiveSearch} = useAppStore((state) => state);
+  const {  activeSearch } = useAppStore((state) => state);
+  const {authUser} = useAppStore((state) => state);
+  const { userAuthData} = useAppStore((state) => state);
   const { activeAdedCartPopup, cart } = useCartStore((state) => state);
 
-  console.log(authUser)
   return (
     <div className="flex gap-4 md:gap-14 items-center relative">
       <div
@@ -17,10 +19,10 @@ const HeaderTopRigthInfo = () => {
       >
         <Search />
       </div>
-      <div className="flex hover:text-yellow-600 cursor-pointer">
+      <Link to={authUser ? "/User" : "/Login"} className="flex hover:text-yellow-600 cursor-pointer">
         <User />
-        <Link to={'/Login'}>{!authUser ? 'Увійти' : userAuthData.name}</Link>
-      </div>
+        <span >{!authUser ? 'Увійти' : userAuthData.name}</span>
+      </Link>
       <Link to={"/cart"} className=" absolute right-0 top-[600px] md:relative md:top-0 md:right-0  bg-white/50 animate-pulse md:animate-none h-[50px] w-[50px] md:h-auto md:w-auto md:border-none border flex items-center justify-center rounded-full md:block">
         <ShoppingCart />
         <span className="absolute -right-2 top-3 bg-yellow-600 w-3 h-3 flex items-center justify-center p-2 text-xs text-white rounded-full">
