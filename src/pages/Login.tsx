@@ -5,10 +5,14 @@ import { IRegisterationUser } from "../../types";
 import { useNavigate } from "react-router-dom";
 import { useAppStore } from "../store/app";
 import LoginUser from "../components/Login/LoginUser";
+import Popup from "../UI/Popup";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setUserAuth, setAuthUser, setUserId } = useAppStore((state) => state);
+  const [activePopup, setActivePopup] = useState(false);
+  const setAuthUser = useAppStore((state) => state.setAuthUser);
+  const setUserId = useAppStore((state) => state.setUserId);
+  const setUserName = useAppStore((state) => state.setUserName);
   const [tabsUser, setTabsUser] = useState<"login" | "register">("login");
   const [userLoginData, setUserLoginData] = useState({
     email: "",
@@ -22,6 +26,7 @@ const Login = () => {
     }
   );
   const [errorMessage, setErrorMessage] = useState("");
+  const [textPopup, setTextPopup] = useState("");
 
   async function postDataNewUser(e) {
     e.preventDefault();
@@ -50,7 +55,7 @@ const Login = () => {
         console.log(data);
         setUserId(data.userId);
         console.log("добавлен");
-        setUserAuth(registerationUser.name);
+        setUserName(registerationUser.name);
         setTimeout(() => {
           navigate("/");
         }, 2000);
@@ -71,11 +76,37 @@ const Login = () => {
     }
   }
 
-  async function postDataLoginUser(e) {}
+  async function postDataLoginUser(e) {
+    e.preventDefault();
 
-  useEffect(() => {
-    // postDataUser()
-  }, []);
+    try {
+      const response = await fetch(`http://localhost:5000/loginUser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userLoginData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setTextPopup("Успешный вход");
+        setActivePopup(true);
+        setAuthUser(true);
+        setUserName(data.user.name);
+        setUserId(data.user.id);
+        setTimeout(() => {
+          navigate("/User");
+          setActivePopup(false);
+        }, 2000);
+      } else {
+        setTextPopup(data.message || "Ошибка логина");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="flex  flex-col md:flex-row text-center min-h-[600px] bg-gray-100 py-16 md:py-10 -mx-4">
@@ -113,6 +144,10 @@ const Login = () => {
           />
         )}
       </div>
+
+      <Popup isActivePopup={activePopup}>
+        <h5>{textPopup}</h5>
+      </Popup>
     </div>
   );
 };

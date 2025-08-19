@@ -8,7 +8,7 @@ const HeaderTopRigthInfo = () => {
   const { setActiveSearch} = useAppStore((state) => state);
   const {  activeSearch } = useAppStore((state) => state);
   const {authUser} = useAppStore((state) => state);
-  const { userAuthData} = useAppStore((state) => state);
+  const { userName} = useAppStore((state) => state);
   const { activeAdedCartPopup, cart } = useCartStore((state) => state);
 
   return (
@@ -21,7 +21,7 @@ const HeaderTopRigthInfo = () => {
       </div>
       <Link to={authUser ? "/User" : "/Login"} className="flex hover:text-yellow-600 cursor-pointer">
         <User />
-        <span >{!authUser ? 'Увійти' : userAuthData.name}</span>
+        <span >{!authUser ? 'Увійти' : userName}</span>
       </Link>
       <Link to={"/cart"} className=" absolute right-0 top-[600px] md:relative md:top-0 md:right-0  bg-white/50 animate-pulse md:animate-none h-[50px] w-[50px] md:h-auto md:w-auto md:border-none border flex items-center justify-center rounded-full md:block">
         <ShoppingCart />

@@ -29,9 +29,9 @@ const Router = () => {
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/User" element={<UserData />}>
             <Route index element={<UserProfile />} />
-            <Route path="/User/UserProfile" element={<UserProfile />} />
-            <Route path="/User/UserOrders" element={<UserOrders />} />
-               <Route path="/User/UserAdress" element={<UserAdress />} />
+            <Route path="UserProfile" element={<UserProfile />} />
+            <Route path="UserOrders" element={<UserOrders />} />
+               <Route path="UserAdress" element={<UserAdress />} />
           </Route>
         </Route>
       </Routes>

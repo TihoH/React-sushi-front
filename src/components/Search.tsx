@@ -10,7 +10,7 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const { dataSearch, isLoadingSearch } = useGetDataSearch(searchValue);
   const containerRef = useRef<HTMLDivElement>(null);
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -25,14 +25,12 @@ const Search = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-     
     };
-
   }, [setActiveSearch]);
 
-  useEffect( () => {
-       setActiveSearch(false);
-  } , [location.pathname])
+  useEffect(() => {
+    setActiveSearch(false);
+  }, [location.pathname]);
 
   return (
     <div
