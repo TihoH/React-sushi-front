@@ -40,7 +40,7 @@ const Login = () => {
       return;
     }
     try {
-      const response = await fetch("http://localhost:5000/registration", {
+      const response = await fetch("https://react-sushi.onrender.com/registration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/loginUser`, {
+      const response = await fetch(`https://react-sushi.onrender.com/loginUser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
