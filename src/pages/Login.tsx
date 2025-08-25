@@ -15,6 +15,7 @@ const Login = () => {
   const setUserName = useAppStore((state) => state.setUserName);
   const [tabsUser, setTabsUser] = useState<"login" | "register">("login");
   const [userLoginData, setUserLoginData] = useState({
+    name: "" ,
     email: "",
     password: "",
   });
@@ -91,9 +92,10 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setTextPopup("Успешный вход");
+        setTextPopup("Ласкаво просимо!");
         setActivePopup(true);
         setAuthUser(true);
+        setErrorMessage("");
         setUserName(data.user.name);
         setUserId(data.user.id);
         setTimeout(() => {
@@ -101,10 +103,12 @@ const Login = () => {
           setActivePopup(false);
         }, 2000);
       } else {
-        setTextPopup(data.message || "Ошибка логина");
+        setErrorMessage(data.message || "Ошибка логина");
       }
     } catch (error) {
       console.log(error);
+        setErrorMessage("Помилка входу");
+
     }
   }
 
@@ -143,6 +147,7 @@ const Login = () => {
             setTabsUser={setTabsUser}
           />
         )}
+        <span className="text-red-600 ">{errorMessage}</span>
       </div>
 
       <Popup isActivePopup={activePopup}>

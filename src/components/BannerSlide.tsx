@@ -17,7 +17,7 @@ const images = [...baseImages, ...baseImages];
 
 export default function BannerSlide() {
   return (
-    <div className="-mx-[calc((100vw-100%)/2)] mt-2 hidden md:block">
+    <div className="-mx-[calc((100vw-100%)/2)] mt-2 hidden md:block md:mt-4">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         // navigation
@@ -30,7 +30,7 @@ export default function BannerSlide() {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        style={{ width: "100%", height: 300 }}
+        style={{ width: "100%", height: 300 , backgroundColor: 'none'}}
       >
         {images.map((src, idx) => (
           <SwiperSlide key={idx}>

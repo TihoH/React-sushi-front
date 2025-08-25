@@ -6,7 +6,7 @@ export const useAppStore = create(
     (set, get) => ({
       authUser: false,
       userId: null,
-      userName: '',
+      userName: "",
       currentCategory: "deliveryDnepr",
       activeSearch: false,
       activeCategory: "",
@@ -32,17 +32,18 @@ export const useAppStore = create(
       setAuthUser: (val) => {
         if (!val) {
           localStorage.removeItem("app-storage");
-          set({ authUser: false ,   userName: '',  userId: null,});
+          set({ authUser: false, userName: "", userId: null });
         } else {
           set({ authUser: true });
         }
       },
       setUserName: (val) => {
-        set({userName: val});
+        set({ userName: val });
       },
-         setUserId: (val) => {
-        set({userId: val});
+      setUserId: (val) => {
+        set({ userId: val });
       },
+
     }),
     {
       name: "app-storage",

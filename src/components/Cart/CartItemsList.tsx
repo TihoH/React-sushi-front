@@ -12,15 +12,15 @@ const CartItemsList: FC<ICartItemsListProps> = ({ cart }) => {
   const { clearCart } = useCartStore((state) => state);
 
   return (
-    <div className="flex flex-col bg-white shadow-lg rounded-xl p-1 sm:p-4 md:p-6 min-h-full">
+    <div className="flex flex-col bg-white shadow-xl rounded-2xl p-4 sm:p-6 md:p-8 min-h-full">
       {/* Заголовок и кнопка очистки */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-2 sm:pb-3 md:pb-4 mb-3 sm:mb-4">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-200 pb-3 sm:pb-4 mb-4 sm:mb-6">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 break-words">
           {cart.length ? "Моє замовлення" : "Ваш кошик пустий"}
         </h1>
         {cart.length > 0 && (
           <button
-            className="text-red-500 hover:text-red-600 font-medium text-sm mt-1 md:mt-0 transition"
+            className="mt-2 sm:mt-0 text-red-500 hover:text-red-600 font-semibold text-sm transition-colors"
             onClick={() => clearCart()}
           >
             Очистити кошик ✕
@@ -29,11 +29,11 @@ const CartItemsList: FC<ICartItemsListProps> = ({ cart }) => {
       </div>
 
       {/* Список товаров */}
-      <div className="flex flex-col gap-3 sm:gap-4">
+      <div className="flex flex-col gap-4">
         {cart.map((cartItem) => (
           <div
             key={cartItem.id}
-            className="bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition p-3 sm:p-4"
+            className="bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition p-4 sm:p-5"
           >
             <CartItem cartItem={cartItem} />
           </div>
@@ -42,8 +42,9 @@ const CartItemsList: FC<ICartItemsListProps> = ({ cart }) => {
 
       {/* Кнопка оформления */}
       {cart.length > 0 && (
-        <div className="mt-4 sm:mt-6 flex justify-end">
-          <AdedToOrder />
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:justify-end gap-3">
+          {/* <AdedToOrder className="w-full sm:w-auto" /> */}
+             <AdedToOrder  />
         </div>
       )}
     </div>

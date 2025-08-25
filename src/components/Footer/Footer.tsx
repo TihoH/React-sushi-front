@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     const styleUl = 'flex flex-col mt-2 md:gap-5  md:mt-0'
     return (
-        <div className=' flex md:flex-row flex-col justify-between py-10 px-5 '>
+        <div className=' flex md:flex-row flex-col justify-between py-10 px-5 bg-white'>
             <ul className={`${styleUl}`}>
                 <li className=' font-semibold text-xl md:text-2xl'>We Sushi</li>
                 <span className='text-myTextGray'>Акції</span>

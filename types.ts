@@ -22,5 +22,10 @@ export interface ICities {
 export interface IRegisterationUser {
     name: string ,
     email: string ,
-    password: string
+    password: string ,
+    address?: string ,
+    phone?: string
+    createdAt?: string | Date;
+updatedAt?: string | Date;
 }
+

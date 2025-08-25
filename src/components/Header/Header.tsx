@@ -3,15 +3,20 @@ import HeaderTop from "./HeaderTop";
 import HeaderLinks from "./HeaderLinks";
 import { useAppStore } from "../../store/app";
 import CitiesModal from "../Modal/CitiesModal";
+import PopupInfo from "../../UI/PopupInfo";
+import { useCartStore } from "../../store/cart";
 
 const Header = () => {
   const [showTop, setShowTop] = useState(true);
   const lastScrollY = useRef(0);
   const { activeSearch } = useAppStore((state) => state);
+    const { activeAdedCartPopup } = useCartStore((state) => state);
   const [activeBurgerMenu, setActiveBurgerMenu] = useState(false);
   const {openSitiesModal, isActiveModalCities } = useAppStore(
     (state) => state
   );
+
+  
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;

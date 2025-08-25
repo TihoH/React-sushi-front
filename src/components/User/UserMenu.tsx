@@ -1,50 +1,24 @@
-import { ListOrdered, MapPinHouse, User, UserX } from "lucide-react";
-import React from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { UserX } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppStore } from "../../store/app";
+import { userMenuLinks } from "../../data/userMenuLinks";
+import { userFavoritesStore } from "../../store/userFavorites";
 
-const UserMenu = ({ setActiveBurgerAside, setActiveLink, activeLink }) => {
-  const userMenuLinks = [
-    {
-      name: "Профиль",
-      id: 1,
-      icon: User,
-      link: "/User/UserProfile",
-      linkName: "UserProfile",
-    },
-    {
-      name: "Заказы",
-      id: 2,
-      icon: ListOrdered,
-      link: "/User/UserOrders",
-      linkName: "UserOrders",
-    },
-    {
-      name: "Адрес",
-      id: 3,
-      icon: MapPinHouse,
-      link: "/User/UserAdress",
-      linkName: "UserAdress",
-    },
-  ];
+const UserMenu = () => {
   const { setAuthUser } = useAppStore((store) => store);
   const navigate = useNavigate();
   const location = useLocation();
   const { nameLink } = location.state || {};
 
+  const { allIdFavorites } = userFavoritesStore((state) => state);
+
   const exitUser = () => {
     navigate("/");
     setAuthUser(false);
   };
-  const changeLink = (item) => {
-        // setActiveLink(item.linkName);
-    setActiveBurgerAside(false);
-  };
-
-  console.log(location);
 
   return (
-    <div className="w-full max-w-sm bg-white md:shadow-lg rounded-2xl  h-full flex  flex-col justify-between">
+    <div className="w-full max-w-sm bg-white md:shadow-lg md:rounded-2xl  h-full flex  flex-col justify-between">
       <ul className="flex flex-col ">
         {userMenuLinks.map((item) => (
           <li
@@ -56,13 +30,21 @@ const UserMenu = ({ setActiveBurgerAside, setActiveLink, activeLink }) => {
             <Link
               to={item.link}
               className={`flex items-center gap-3 px-4 py-4 transition-colors pl-6`}
-              onClick={() => changeLink(item)}
-              state={ {nameLink: item.linkName} }
+              state={{ nameLink: item.linkName }}
             >
               <item.icon className="w-5 h-5 text-gray-600" />
-              <span className="text-base font-medium text-gray-800 group-hover:text-yellow-500 transition-all">
-                {item.name}
-              </span>
+              <div className="w-full flex items-center justify-between text-base font-medium text-gray-800 md:group-hover:text-yellow-500 transition-all">
+                <span> {item.name}</span>
+                {item.name === "Избранное" && (
+                  <span
+                    className={
+                      "text-green-700  text-sm  rounded-full w-[27px] h-[27px] inline-flex items-center justify-center "
+                    }
+                  >
+                    {allIdFavorites.length}
+                  </span>
+                )}
+              </div>
             </Link>
           </li>
         ))}

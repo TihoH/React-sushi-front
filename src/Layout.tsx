@@ -5,11 +5,14 @@ import Main from "./components/Main";
 import { useAppStore } from "./store/app";
 import Search from "./components/Search";
 import { useEffect } from "react";
+import PopupInfo from "./UI/PopupInfo";
+import { useCartStore } from "./store/cart";
 
 const Layout = () => {
   const { activeSearch } = useAppStore((state) => state);
+  const { activeAdedCartPopup } = useCartStore((state) => state);
 
-    useEffect(() => {
+  useEffect(() => {
     if (activeSearch) {
       document.body.classList.add("overflow-hidden");
     } else {
@@ -23,20 +26,31 @@ const Layout = () => {
   }, [activeSearch]);
 
   return (
-    <div className=" min-h-screen flex flex-col overflow-x-hidden max-w-[1980px] m-auto">
+    <div className=" min-h-screen flex flex-col overflow-x-hidden max-w-[1680px] m-auto bg-gray-100 relative border ">
       <Header />
 
-      <main className="px-4 mt-2 flex-1 flex flex-col min-h-0">
+      <main className="px-2 md:px-4  flex-1 flex flex-col min-h-0">
         <Outlet />
       </main>
 
       <footer>
         <Footer />
       </footer>
-
-        <section className={`${activeSearch ? 'opacity-100 ' : 'opacity-0 pointer-events-none'}  transition fixed inset-0 z-10 bottom-0 overflow-y-auto `}>
-          <Search />
-        </section>
+      {/* Start popups=modal */}
+      <section
+        className={`${
+          activeSearch ? "opacity-100 " : "opacity-0 pointer-events-none"
+        }  transition fixed inset-0 z-10 bottom-0 overflow-y-auto `}
+      >
+        <Search />
+      </section>
+      <section>
+        <PopupInfo
+          className={""}
+          activeInfoPopup={activeAdedCartPopup}
+          children={"Товар додано в кошик"}
+        />
+      </section>
     </div>
   );
 };

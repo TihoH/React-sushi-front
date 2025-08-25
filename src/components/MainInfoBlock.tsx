@@ -3,8 +3,8 @@ import React, { useState } from "react";
 const MainInfoBlock = () => {
   const [expanded, setExpanded] = useState(false);
   return (
-    <div className=" relative   text-gray-700  pl-4 md:pl-0 my-10 border-l-2 w-full flex flex-col  items-center">
-      <div className="max-w-3xl">
+    <div className=" relative    text-gray-700  pl-4 md:pl-0 my-10 border-l-2 w-full flex flex-col  items-center">
+      <div className="max-w-3xl bg-white p-2 px-4 rounded-md">
         <h2 className="text-xl font-semibold mb-2">
           Суші та роли від ресторану We Sushi з доставкою у Вишневе
         </h2>

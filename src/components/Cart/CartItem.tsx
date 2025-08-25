@@ -22,15 +22,13 @@ const CartItem: FC<ICartItemProps> = ({
             alt="cart item image"
           />
         </Link>
-        {/*СТАРТ для мобильного */}
         <div className=" md:hidden flex flex-col flex-1 text-center">
           <h2 className="text-lg font-semibold">{cartItem.name}</h2>
           <span className="text-myTextGray">
             {cartItem.weight} г /{" "}
             <span className="text-black">{cartItem.price} грн</span>
           </span>
-        </div>
-        {/*END для мобильного */}
+        </div>  
       </div>
       <CartItemDescription
         cartItem={cartItem}

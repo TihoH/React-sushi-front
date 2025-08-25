@@ -5,14 +5,15 @@ import CardProductInfo from "../components/CardProductInfo";
 import SkeletonPageProduct from "../UI/SkeletonPageProduct";
 import RecomendedProducts from "../components/RecomendedProducts.tsx";
 import { useEffect } from "react";
+import { useAppStore } from "../store/app.js";
 
 const CardProduct = () => {
   const idProduct = useLocation().state?.id;
   const { product } = useGetProduct(idProduct);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-    const { pathname } = useLocation();
-
+  
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
@@ -22,7 +23,7 @@ const CardProduct = () => {
   }
 
   return (
-    <div className="mt-16 md:mt-5 ">
+    <div className="mt-16 md:mt-5 md:max-w-[1400px] md:m-auto">
       <div>
         <button
           className="flex items-center hover:text-yellow-800 group"

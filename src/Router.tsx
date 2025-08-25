@@ -11,6 +11,7 @@ import UserData from "./pages/UserData";
 import UserProfile from "./components/User/UserProfile";
 import UserOrders from "./components/User/UserOrders";
 import UserAdress from "./components/User/UserAdress";
+import Favorites from "./components/User/Favorites";
 
 const Router = () => {
   return (
@@ -32,6 +33,7 @@ const Router = () => {
             <Route path="UserProfile" element={<UserProfile />} />
             <Route path="UserOrders" element={<UserOrders />} />
                <Route path="UserAdress" element={<UserAdress />} />
+                         <Route path="Favorites" element={<Favorites />} />
           </Route>
         </Route>
       </Routes>

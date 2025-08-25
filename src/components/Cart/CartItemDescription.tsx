@@ -24,13 +24,13 @@ const CartItemDescription: FC<ICartItemDescriptionProps> = ({
         </h2>
         <span className="text-myTextGray hidden md:block">
           {cartItem.weight} г /{" "}
-          <span className="text-black">{cartItem.price} грн</span>
+          <span className="text-green-600 font-bold">{cartItem.price} грн</span>
         </span>
       </div>
       <div className="flex justify-between w-full items-center md:pl-10 ">
         <div className="text-xl text-myTextGray">
           {cartItem.quantity && (
-            <span>
+            <span className="text-green-600 font-bold">
               {flagAdedToOrder && cartItem.quantity < 2 ? (
                 <span className="text-green-700">безкоштовно</span>
               ) : (

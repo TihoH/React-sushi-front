@@ -31,7 +31,7 @@ const AdedToCart: FC<IAdedToCartProps> = ({ cardItem, widthBtn, active }) => {
         widthBtn={widthBtn}
         active={findItemInCart && false}
         onClick={(e) => addedItemToCart(e)}
-        className={`${findItemInCart && "border border-gray-300 bg-gray-100 "}  `}
+        className={`${findItemInCart && "border border-gray-300 bg-gray-100 "} hover:scale-105 `}
       >
         {!findItemInCart || !findItemInCart.quantity ? (
           "В Кошик"

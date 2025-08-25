@@ -8,7 +8,7 @@ interface PopupProps {
 const Popup: FC<PopupProps> = ({ children, isActivePopup }) => {
   return (
     <div
-      className={`absolute inset-0 bg-black/50 z-50 flex items-center justify-center 
+      className={`fixed top-0 left-0 right-0 bottom-0 inset-0 bg-black/50 z-50 flex items-center justify-center 
   transition-opacity duration-300 
   ${
     isActivePopup
@@ -17,7 +17,7 @@ const Popup: FC<PopupProps> = ({ children, isActivePopup }) => {
   }`}
     >
       <div
-        className={`bg-white max-w-[600px] w-full rounded-md p-5 border-4 border-green-300
+        className={`bg-white w-[80%] md:max-w-[600px] md:w-full rounded-md p-5 border-4 border-green-300
     transform transition-all duration-300
     ${isActivePopup ? "scale-100 opacity-100" : "scale-90 opacity-0"}`}
       >
