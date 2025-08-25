@@ -4,7 +4,7 @@ import { useAppStore } from "../../store/app";
 import { userMenuLinks } from "../../data/userMenuLinks";
 import { userFavoritesStore } from "../../store/userFavorites";
 
-const UserMenu = () => {
+const UserMenu = ({setActiveBurgerAside}) => {
   const { setAuthUser } = useAppStore((store) => store);
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,6 +31,7 @@ const UserMenu = () => {
               to={item.link}
               className={`flex items-center gap-3 px-4 py-4 transition-colors pl-6`}
               state={{ nameLink: item.linkName }}
+              onClick={ () => setActiveBurgerAside(false) }
             >
               <item.icon className="w-5 h-5 text-gray-600" />
               <div className="w-full flex items-center justify-between text-base font-medium text-gray-800 md:group-hover:text-yellow-500 transition-all">

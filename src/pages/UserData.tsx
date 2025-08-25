@@ -31,7 +31,7 @@
               md:max-w-[20%] w-full  md:p-3  
           `}
         >
-          <UserMenu
+          <UserMenu setActiveBurgerAside={setActiveBurgerAside}
           />
         </aside>
 

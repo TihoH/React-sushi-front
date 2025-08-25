@@ -18,12 +18,12 @@ const Favorites = () => {
   }, [userId ]);
 
   return (
-    <div className="mx-auto bg-white rounded-xl mt-8 p-6">
-      <div className="flex justify-between items-center mb-4">
+    <div className="mx-auto  bg-white rounded-xl mt-8 md:p-6">
+      <div className="flex flex-col md:flex-row gap-3 justify-between items-center mb-4">
         <h3 className="text-xl font-semibold text-gray-800">
           Список доданих у «Вибране»
         </h3>
-        <div className="flex gap-5 items-center">
+        <div className="flex flex-col md:flex-row gap-5 items-center">
           <select className="flex gap-2 cursor-pointer outline-none p-2 shadow-md">
             <option value="">Показати по</option>
             {sortBy.map((item) => (
