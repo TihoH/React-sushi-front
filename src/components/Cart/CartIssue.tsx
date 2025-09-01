@@ -1,10 +1,9 @@
 import React from "react";
 import CustomButton from "../../UI/CustomButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { orderPrice } from "../../utils/cart";
 
-const CartIssue = ({ cart, adedToOrderProducts }) => {
-  const navigate = useNavigate();
+const CartIssue = ({ cart, adedToOrderProducts , pushOrder }) => {
 
   return (
     <div className="mb-5 md:mb-0 p-4 bg-white border border-gray-200 text-myTextGray shadow-lg rounded-xl max-w-md mx-auto">
@@ -27,7 +26,8 @@ const CartIssue = ({ cart, adedToOrderProducts }) => {
         </h4>
 
         <CustomButton
-          onClick={cart.length ? () => navigate("/ChekoutOrder") : null}
+          onClick={cart.length ? () => pushOrder() : null}
+          
           className="mt-3 font-semibold fixed md:static bottom-4 left-1/2 -translate-x-1/2 md:translate-x-0 w-full md:w-auto px-6 py-3 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {cart.length > 0 ? (

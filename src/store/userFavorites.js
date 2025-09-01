@@ -4,13 +4,12 @@ import { persist } from "zustand/middleware";
 export const userFavoritesStore = create(
   persist(
     (set, get) => ({
-      // userId: null,
       allIdFavorites: [],
       favorites: [],
 
       setUserId: (val) => set({ userId: val }),
 
-      addToFavorites: async ( userId , cardItem) => {
+      addToFavorites: async (userId, cardItem , setIsActiveLoader) => {
         // const { userId } = get();
         if (!userId) return;
 
@@ -29,6 +28,7 @@ export const userFavoritesStore = create(
               allIdFavorites: [...state.allIdFavorites, cardItem.id], // добавляем id
               favorites: [...state.favorites, cardItem], // добавляем объект для рендера
             }));
+            setIsActiveLoader(false)
           }
         } catch (error) {
           console.error(error);
@@ -78,6 +78,28 @@ export const userFavoritesStore = create(
         } catch (error) {
           console.error(error);
         }
+      },
+      deleteFavorites: async (userId, productId , setIsActiveLoader) => {
+        if (!userId || !productId) return;
+        try {
+          const response = await fetch(
+            `https://react-sushi.onrender.com/deleteItemFavorites/${userId}`,
+            {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({productId}),
+            }
+          );
+
+          if (response.ok) {
+            const {allIdFavorites} = get()
+            setIsActiveLoader(false)
+
+            set({ allIdFavorites: [...allIdFavorites].filter( item => item != productId ) })
+          }
+        } catch (error) {}
       },
     }),
     { name: "favorites-store" }

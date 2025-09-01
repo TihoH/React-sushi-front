@@ -8,8 +8,10 @@ import { headerLinks } from "../data/headerLinks.js";
 const ListCurrentCategory = () => {
   const params = useParams();
   const { data, isLoading } = useGetDataCategory(params.name);
-  const { activeCategory } = useAppStore((state) => state);
+  const activeCategory = useAppStore((state) => state.activeCategory);
   const findLink = headerLinks.find((item) => item.link === activeCategory);
+
+  console.log("ререндер");
 
   return (
     <div className="mb-10  md:px-8">

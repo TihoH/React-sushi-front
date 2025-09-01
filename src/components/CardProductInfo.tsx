@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { ItemProduct } from "../../types";
 import { BanknoteArrowDown, Gift, Info, Star, Truck } from "lucide-react";
-import WrappToButtonOrder from "./WrappToButtonOrder";
+
 import { useAppStore } from "../store/app";
 import { userFavoritesStore } from "../store/userFavorites";
+import GroupBtnProduct from "./GroupBtnProduct";
 
 interface ICardProductsInfoProps {
   product: ItemProduct;
@@ -13,54 +14,65 @@ const CardProductInfo: FC<ICardProductsInfoProps> = ({ product }) => {
   if (!product) {
     return null;
   }
-  const { userId } = useAppStore((state) => state);
-  const { addToFavorites, allIdFavorites } = userFavoritesStore(
-    (state) => state
-  );
+  const userId = useAppStore((state) => state.userId);
+  const addToFavorites = userFavoritesStore((state) => state.addToFavorites);
+  const allIdFavorites = userFavoritesStore((state) => state.allIdFavorites);
   const findIdFavorites = allIdFavorites.includes(product.id);
+  const [isActiveLoader, setIsActiveLoader] = useState(false);
+
+  const changeToFavorites = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    product: ItemProduct
+  ) => {
+    e.preventDefault();
+    setIsActiveLoader(true);
+    setTimeout(() => {
+      addToFavorites(userId, product, setIsActiveLoader);
+    }, 200);
+  };
+
   return (
     <div className="w-full bg-white p-4 sm:p-6 rounded-xl shadow-lg">
-      {/* Назва, вага, ціна */}
- {/* Название и кнопка "В избранное" */}
-<div className="flex justify-between items-center gap-4">
-  <h1 className="text-xl sm:text-3xl font-bold text-gray-800 break-words">
-    {product.name.toLocaleUpperCase()}
-  </h1>
+      <div className="flex justify-between items-center gap-4">
+        <h1 className="text-xl sm:text-3xl font-bold text-gray-800 break-words">
+          {product.name.toLocaleUpperCase()}
+        </h1>
 
-  <button
-    className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${
-      findIdFavorites
-        ? "bg-green-100 border-green-400 text-green-600"
-        : "bg-yellow-50 border-yellow-300 text-gray-600 hover:bg-yellow-100 hover:text-yellow-600"
-    }`}
-    onClick={(e) => {
-      e.preventDefault();
-      addToFavorites(userId, product);
-    }}
-    disabled={findIdFavorites}
-  >
-    <Star size={18} />
-    <span className="text-sm font-medium">
-      {findIdFavorites ? "Додано" : "В обране"}
-    </span>
-  </button>
-</div>
+        <button
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${
+            findIdFavorites
+              ? "bg-green-100 border-green-400 text-green-600"
+              : "bg-yellow-50 border-yellow-300 text-gray-600 hover:bg-yellow-100 hover:text-yellow-600"
+          }`}
+          onClick={(e) => changeToFavorites(e , product) }
+          disabled={findIdFavorites}
+        >
+          {isActiveLoader ? (
+            <span className="w-4 h-4 border-2 border-t-transparent border-current rounded-full animate-spin"></span>
+          ) : (
+            <div className="flex gap-2 items-center">
+              <span className="text-sm font-medium">
+                {findIdFavorites ? "Додано" : "В обране"}
+              </span>
+              <Star size={18} />
+            </div>
+          )}
+        </button>
+      </div>
 
-{/* Вага */}
-<p className="text-base sm:text-lg text-gray-600 mt-2">
-  <span className="font-medium">Вага: </span>
-  {product.weight} г
-</p>
+      {/* Вага */}
+      <p className="text-base sm:text-lg text-gray-600 mt-2">
+        <span className="font-medium">Вага: </span>
+        {product.weight} г
+      </p>
 
-{/* Цена и кнопка "В корзину" */}
-<div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mt-4">
-  <span className="text-2xl sm:text-[42px] font-bold text-green-600">
-    {product.price} грн
-  </span>
-  <WrappToButtonOrder cardItem={product} widthBtn={200} />
-</div>
-
-
+      {/* Цена и кнопка "В корзину" */}
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mt-4">
+        <span className="text-2xl sm:text-[42px] font-bold text-green-600">
+          {product.price} грн
+        </span>
+        <GroupBtnProduct cardItem={product} />
+      </div>
 
       {/* Інфо блоки */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 text-gray-700 text-sm sm:text-base">

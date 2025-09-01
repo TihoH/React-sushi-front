@@ -9,8 +9,8 @@ import PopupInfo from "./UI/PopupInfo";
 import { useCartStore } from "./store/cart";
 
 const Layout = () => {
-  const { activeSearch } = useAppStore((state) => state);
-  const { activeAdedCartPopup } = useCartStore((state) => state);
+const activeSearch = useAppStore((state) => state.activeSearch);
+const activeAdedCartPopup = useCartStore((state) => state.activeAdedCartPopup);
 
   useEffect(() => {
     if (activeSearch) {

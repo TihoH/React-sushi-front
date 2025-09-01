@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import CardItem from "./CardItem";
+import CardItem from "./CardItem/CardItem";
 import { ItemProduct } from "../../types";
 import SkeletonCard from "../UI/SkeletonCard";
 import { Link } from "react-router-dom";
@@ -24,9 +24,14 @@ const GroupSushiList: FC<IGroupSushiListProps> = ({
   type,
   gridCols = 4,
 }) => {
-  const { userId, authUser } = useAppStore((state) => state);
-  const { getAllIdFavorites , addToFavorites } = userFavoritesStore((state) => state);
+  const userId = useAppStore((state) => state.userId);
+  const authUser = useAppStore((state) => state.authUser);
+  const { getAllIdFavorites } = userFavoritesStore();
+  const addToFavorites = userFavoritesStore((state) => state.addToFavorites);
+  const deleteFavorites = userFavoritesStore((state) => state.deleteFavorites);
   const [activePopupInfo, setActivePopupInfo] = useState(false);
+  const [isActiveLoader, setIsActiveLoader] = useState(false);
+  const [selectedId , setSelectedId] = useState(0)
 
   useEffect(() => {
     if (userId) {
@@ -34,10 +39,26 @@ const GroupSushiList: FC<IGroupSushiListProps> = ({
     }
   }, [userId]);
 
-  const adedToFavorites = (e, cardItem) => {
+  const changeToFavorites = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    cardItem: ItemProduct,
+    type: string
+  ) => {
+    e.preventDefault();
+    setSelectedId(cardItem.id)
+    setIsActiveLoader(true);
+    if (type === "delete" && authUser) {
+      console.log("da");
+
+      setTimeout(() => {
+        deleteFavorites(userId, cardItem.id, setIsActiveLoader);
+      }, 200);
+
+      return;
+    }
     if (authUser) {
-      e.preventDefault();
-      addToFavorites(userId , cardItem);
+      addToFavorites(userId, cardItem ,    setIsActiveLoader);
+      return;
     }
   };
 
@@ -64,7 +85,10 @@ const GroupSushiList: FC<IGroupSushiListProps> = ({
               >
                 <CardItem
                   cardItem={cardItem}
-                  adedToFavorites={adedToFavorites}
+                  changeToFavorites={changeToFavorites}
+                  isActiveLoader={isActiveLoader}
+    
+                  selectedId={selectedId}
                 />
               </Link>
             ))}

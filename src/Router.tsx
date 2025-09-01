@@ -32,8 +32,8 @@ const Router = () => {
             <Route index element={<UserProfile />} />
             <Route path="UserProfile" element={<UserProfile />} />
             <Route path="UserOrders" element={<UserOrders />} />
-               <Route path="UserAdress" element={<UserAdress />} />
-                         <Route path="Favorites" element={<Favorites />} />
+            <Route path="UserAdress" element={<UserAdress />} />
+            <Route path="Favorites" element={<Favorites />} />
           </Route>
         </Route>
       </Routes>

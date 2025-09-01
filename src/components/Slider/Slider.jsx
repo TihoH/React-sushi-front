@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import CardItem from "../CardItem";
+import CardItem from "../CardItem/CardItem";
 import { Link } from "react-router-dom";
 import CustomBtnSwiper from "./CustomBtnSwiper";
 

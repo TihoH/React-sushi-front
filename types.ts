@@ -16,7 +16,7 @@ export type ItemProduct = {
 export interface ICities {
     id:number ,
     name: string ,
-    Link: string ,
+    link: string ,
 }
 
 export interface IRegisterationUser {

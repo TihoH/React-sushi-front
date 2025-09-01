@@ -7,7 +7,7 @@ import { useAppStore } from "../store/app.js";
 
 const Main = () => {
   const { data, isLoading } = useGetDataCategory('deliveryDnepr');
-      const {activeCities } = useAppStore((state) => state);
+      const activeCities = useAppStore((state) => state.activeCities);
 
   return (
     <>

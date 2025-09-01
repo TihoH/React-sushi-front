@@ -3,7 +3,8 @@ import { useAppStore } from "../../store/app";
 import CitiesModal from "../Modal/CitiesModal";
 
 const HeaderTopLeftInfo = () => {
-  const { activeCities, openSitiesModal } = useAppStore((state) => state);
+const activeCities = useAppStore((state) => state.activeCities);
+const openSitiesModal = useAppStore((state) => state.openSitiesModal);
 
   return (
     <>

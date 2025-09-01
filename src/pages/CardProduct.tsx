@@ -5,7 +5,6 @@ import CardProductInfo from "../components/CardProductInfo";
 import SkeletonPageProduct from "../UI/SkeletonPageProduct";
 import RecomendedProducts from "../components/RecomendedProducts.tsx";
 import { useEffect } from "react";
-import { useAppStore } from "../store/app.js";
 
 const CardProduct = () => {
   const idProduct = useLocation().state?.id;

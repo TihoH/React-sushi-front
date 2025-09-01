@@ -6,7 +6,7 @@ import { useGetDataSearch } from "../hooks/useGetSearchData";
 import { useLocation, useParams } from "react-router-dom";
 
 const Search = () => {
-  const { setActiveSearch } = useAppStore((state) => state);
+  const setActiveSearch = useAppStore((state) => state.setActiveSearch);
   const [searchValue, setSearchValue] = useState("");
   const { dataSearch, isLoadingSearch } = useGetDataSearch(searchValue);
   const containerRef = useRef<HTMLDivElement>(null);

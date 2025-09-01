@@ -9,7 +9,7 @@ interface ICartItemsListProps {
 }
 
 const CartItemsList: FC<ICartItemsListProps> = ({ cart }) => {
-  const { clearCart } = useCartStore((state) => state);
+  const clearCart = useCartStore((state) => state.clearCart);
 
   return (
     <div className="flex flex-col bg-white shadow-xl rounded-2xl p-4 sm:p-6 md:p-8 min-h-full">

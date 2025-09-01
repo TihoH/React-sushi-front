@@ -5,12 +5,12 @@ import CartItemDescription from "./CartItemDescription";
 
 interface ICartItemProps {
   cartItem: ItemProduct;
-  flagAdedToOrder?: boolean;
+  activeTypePrise?: boolean
 }
 
 const CartItem: FC<ICartItemProps> = ({
   cartItem,
-  flagAdedToOrder = false,
+  activeTypePrise = false
 }) => {
   return (
     <div className="md:flex md:flex-row gap-2 shadow-md p-2 hover:shadow-2xl transition cursor-pointer">
@@ -32,7 +32,7 @@ const CartItem: FC<ICartItemProps> = ({
       </div>
       <CartItemDescription
         cartItem={cartItem}
-        flagAdedToOrder={flagAdedToOrder}
+        activeTypePrise={activeTypePrise}
       />
     </div>
   );

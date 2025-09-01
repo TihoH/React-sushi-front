@@ -89,7 +89,7 @@ export const useCartStore = create(
         const adedToOrderProducts = get().adedToOrderProducts ;
         set({ adedToOrderProducts: adedToOrderProducts.map( item => item.id === val ? {...item , quantity: item.quantity - 1} : item ) })
 
-      }
+      },
 
     }),
     {

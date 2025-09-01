@@ -6,7 +6,7 @@
   import { AlignJustify } from "lucide-react";
 
   const UserData = () => {
-    const { cart } = useCartStore((state) => state);
+    const cart = useCartStore((state) => state.cart);
     const [activeBurgerAside, setActiveBurgerAside] = useState(false);
 
     async function postItemInCart() {

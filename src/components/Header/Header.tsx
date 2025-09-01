@@ -9,12 +9,10 @@ import { useCartStore } from "../../store/cart";
 const Header = () => {
   const [showTop, setShowTop] = useState(true);
   const lastScrollY = useRef(0);
-  const { activeSearch } = useAppStore((state) => state);
-    const { activeAdedCartPopup } = useCartStore((state) => state);
+  const activeSearch = useAppStore((state) => state.activeSearch);
   const [activeBurgerMenu, setActiveBurgerMenu] = useState(false);
-  const {openSitiesModal, isActiveModalCities } = useAppStore(
-    (state) => state
-  );
+const openSitiesModal = useAppStore((state) => state.openSitiesModal);
+const isActiveModalCities = useAppStore((state) => state.isActiveModalCities);
 
   
   useEffect(() => {
@@ -57,7 +55,6 @@ const Header = () => {
           />
           <HeaderLinks
             setActiveBurgerMenu={setActiveBurgerMenu}
-            activeBurgerMenu={activeBurgerMenu}
           />
         </div>
         <div className="h-[70px] md:h-[120px] " />

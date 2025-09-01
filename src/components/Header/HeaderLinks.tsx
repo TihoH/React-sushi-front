@@ -5,7 +5,7 @@ import { headerLinks } from "../../data/headerLinks";
 
 const HeaderLinks = ({ setActiveBurgerMenu  }) => {
   const { name } = useParams();
-  const {setActiveCategory} = useAppStore(state => state)
+  const setActiveCategory = useAppStore(state => state.setActiveCategory)
   const links = headerLinks
   return (
     <ul   className={` flex justify-between  md:px-4  absolute top-14 border-t left-0 right-0 z-20 bg-white py-4 md:py-2

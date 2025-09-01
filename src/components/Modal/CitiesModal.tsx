@@ -13,7 +13,7 @@ const CitiesModal: FC<CitiesModalProps> = ({ onClose }) => {
   const activeCities = useAppStore((state) => state.activeCities);
   const setActiveCities = useAppStore((state) => state.setActiveCities);
   const openSitiesModal = useAppStore((state) => state.openSitiesModal);
-  const [valueChoiceCity , setValueChoiceCity] = useState('') 
+  const [valueChoiceCity, setValueChoiceCity] = useState("");
   const [isVisible, setIsVisible] = useState(false);
 
   const chengeChoiceCities = (name: string) => {
@@ -23,11 +23,13 @@ const CitiesModal: FC<CitiesModalProps> = ({ onClose }) => {
     }, 300);
   };
 
-  function renderFindChoiceCity(){
-    if(!valueChoiceCity){
-        return citiesArr
-    }else{
-        return citiesArr.filter( city => city.name.toLowerCase().includes(valueChoiceCity.trim().toLowerCase()) )
+  function renderFindChoiceCity() {
+    if (!valueChoiceCity) {
+      return citiesArr;
+    } else {
+      return citiesArr.filter((city) =>
+        city.name.toLowerCase().includes(valueChoiceCity.trim().toLowerCase())
+      );
     }
   }
 
@@ -54,7 +56,7 @@ const CitiesModal: FC<CitiesModalProps> = ({ onClose }) => {
           type="text"
           className="w-full my-4 p-4 border-2 outline-none rounded-xl"
           placeholder="Введіть назву міста"
-          onChange={ (e) => setValueChoiceCity(e.target.value) }
+          onChange={(e) => setValueChoiceCity(e.target.value)}
         />
         <ul>
           {renderFindChoiceCity().map((city) => (

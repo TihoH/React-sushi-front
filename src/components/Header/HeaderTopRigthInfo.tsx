@@ -6,11 +6,11 @@ import { useCartStore } from "../../store/cart";
 import PopupInfo from "../../UI/PopupInfo";
 
 const HeaderTopRigthInfo = () => {
-  const { setActiveSearch } = useAppStore((state) => state);
-  const { activeSearch } = useAppStore((state) => state);
-  const { authUser } = useAppStore((state) => state);
-  const { userName } = useAppStore((state) => state);
-  const { cart } = useCartStore((state) => state);
+  const setActiveSearch = useAppStore((state) => state.setActiveSearch);
+  const activeSearch = useAppStore((state) => state.activeSearch);
+  const authUser = useAppStore((state) => state.authUser);
+  const userName = useAppStore((state) => state.userName);
+  const cart = useCartStore((state) => state.cart);
 
   return (
     <div className="flex gap-4 md:gap-14 items-center ">
@@ -37,7 +37,6 @@ const HeaderTopRigthInfo = () => {
           {cart.length}{" "}
         </span>
       </Link>
-
     </div>
   );
 };

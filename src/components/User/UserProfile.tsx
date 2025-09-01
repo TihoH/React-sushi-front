@@ -5,7 +5,7 @@ import { CircleCheckBig, Pencil } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const UserProfile: FC = () => {
-  const { userId } = useAppStore((state) => state);
+  const userId = useAppStore((state) => state.userId);
   const [dataUser, setDataUser] = useState<IRegisterationUser | null>(null);
   const [newUserPhone, setNewUserPhone] = useState("+380");
   const [isActiveNewPhone, setIsActiveNewPhone] = useState<boolean>(false);

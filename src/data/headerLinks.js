@@ -6,7 +6,6 @@ export const headerLinks = [
   { link: "Комбо", id: 5 , category: 'combo', description: "Комплексні набори для швидкого та смачного обіду чи вечері." },
   { link: "Суші бургери", id: 6 , category: 'sushiBurger', description: "Суші у форматі бургера – новий та цікавий спосіб насолодитись ролами." },
   { link: "Гаряче та супи", id: 7 , category: 'hotEndSoup', description: "Ситні та ароматні супи та гарячі страви для теплої вечері." },
-  { link: "Салати та закуски", id: 8 , category: '', description: "Легкі салати та закуски для апетитного старту обіду." },
   { link: "Десерти", id: 9 , category: 'salad', description: "Солодкі десерти для завершення трапези з насолодою." },
   { link: "Напої", id: 10 , category: 'drink', description: "Освіжаючі та гарячі напої до будь-якої страви." },
   { link: "Доповнення", id: 11 , category: 'adedToOrder', description: "Соуси, імбир та додаткові інгредієнти для покращення смаку." }
